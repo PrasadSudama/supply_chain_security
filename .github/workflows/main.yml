@@ -14,7 +14,7 @@ jobs:
     
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/upload-artifact@v4
 
     - name: Install Syft
       run: |
@@ -22,7 +22,7 @@ jobs:
 
     - name: Generate SBOM
       run: |
-        syft docker.io/library/nginx:latest -o cyclonedx-xml > sbom.xml
+        syft docker.io/kodekloud/webapp-color:latest -o cyclonedx-xml > sbom.xml
 
     - name: Upload SBOM Artifact
       uses: actions/upload-artifact@v3
