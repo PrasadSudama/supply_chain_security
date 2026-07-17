@@ -1,0 +1,269 @@
+<mxfile host="app.diagrams.net" agent="airflow-arch-generator" version="24.7.5" type="device">
+  <diagram id="airflow-k8s-arch" name="Airflow on Kubernetes">
+    <mxGraphModel dx="1420" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1320" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value='&lt;b&gt;&lt;font color="#017CEE"&gt;Apache Airflow&lt;/font&gt;&lt;/b&gt;&lt;font color="#51504F"&gt; · Kubernetes Deployment Architecture&lt;/font&gt;' style="text;html=1;fontSize=20;fontStyle=1;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="120" y="0" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="AKS node pools · Azure Key Vault secrets · Prometheus / Grafana / Loki / Alloy observability" style="text;html=1;fontSize=11;align=left;verticalAlign=middle;fontColor=#7A8CA3;" vertex="1" parent="1">
+          <mxGeometry x="120" y="28" width="900" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="L1" value="1 · USER LAYER" style="rounded=1;arcSize=4;html=1;whiteSpace=wrap;fillColor=#F8FBFE;strokeColor=#C9D8E8;verticalAlign=top;align=left;spacingLeft=12;spacingTop=4;fontSize=11;fontStyle=1;fontColor=#7A8CA3;" vertex="1" parent="1">
+          <mxGeometry x="120" y="60" width="1200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="L2" value="2 · AIRFLOW CORE LAYER" style="rounded=1;arcSize=4;html=1;whiteSpace=wrap;fillColor=#F8FBFE;strokeColor=#C9D8E8;verticalAlign=top;align=left;spacingLeft=12;spacingTop=4;fontSize=11;fontStyle=1;fontColor=#7A8CA3;" vertex="1" parent="1">
+          <mxGeometry x="120" y="200" width="1200" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="L3" value="3 · KUBERNETES NODE POOLS LAYER · AKS cluster" style="rounded=1;arcSize=4;html=1;whiteSpace=wrap;fillColor=#F8FBFE;strokeColor=#C9D8E8;verticalAlign=top;align=left;spacingLeft=12;spacingTop=4;fontSize=11;fontStyle=1;fontColor=#7A8CA3;" vertex="1" parent="1">
+          <mxGeometry x="120" y="410" width="1200" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="L4" value="4 · SECRETS &amp; CONFIGURATION LAYER" style="rounded=1;arcSize=4;html=1;whiteSpace=wrap;fillColor=#F8FBFE;strokeColor=#C9D8E8;verticalAlign=top;align=left;spacingLeft=12;spacingTop=4;fontSize=11;fontStyle=1;fontColor=#7A8CA3;" vertex="1" parent="1">
+          <mxGeometry x="350" y="680" width="740" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="L5" value="5 · OBSERVABILITY LAYER" style="rounded=1;arcSize=4;html=1;whiteSpace=wrap;fillColor=#F8FBFE;strokeColor=#C9D8E8;verticalAlign=top;align=left;spacingLeft=12;spacingTop=4;fontSize=11;fontStyle=1;fontColor=#7A8CA3;" vertex="1" parent="1">
+          <mxGeometry x="120" y="870" width="1200" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="L6" value="6 · METADATA &amp; STORAGE LAYER" style="rounded=1;arcSize=4;html=1;whiteSpace=wrap;fillColor=#F8FBFE;strokeColor=#C9D8E8;verticalAlign=top;align=left;spacingLeft=12;spacingTop=4;fontSize=11;fontStyle=1;fontColor=#7A8CA3;" vertex="1" parent="1">
+          <mxGeometry x="120" y="1060" width="1200" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="poolJobs" value='&lt;b&gt;Jobs Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#7A8CA3"&gt;&lt;i&gt;general task execution&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=8;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#8CA3B8;strokeWidth=1.5;verticalAlign=top;spacingTop=4;fontSize=12;fontColor=#37474F;" vertex="1" parent="1">
+          <mxGeometry x="150" y="455" width="270" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="poolJobs_c0" value="Worker Pods — standard tasks" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#FDEAE7;strokeColor=#E43921;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="170" y="499" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="poolHi" value='&lt;b&gt;High Memory Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#7A8CA3"&gt;&lt;i&gt;memory-optimised nodes&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=8;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#8CA3B8;strokeWidth=1.5;verticalAlign=top;spacingTop=4;fontSize=12;fontColor=#37474F;" vertex="1" parent="1">
+          <mxGeometry x="440" y="455" width="270" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="poolHi_c0" value="DAG Processor" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#E5FAFB;strokeColor=#00C7D4;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="460" y="499" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="poolHi_c1" value="Worker Pods — memory-heavy tasks" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#FDEAE7;strokeColor=#E43921;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="460" y="526" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="poolUltra" value='&lt;b&gt;Ultra High Memory Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#7A8CA3"&gt;&lt;i&gt;very large memory nodes&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=8;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#8CA3B8;strokeWidth=1.5;verticalAlign=top;spacingTop=4;fontSize=12;fontColor=#37474F;" vertex="1" parent="1">
+          <mxGeometry x="730" y="455" width="270" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="poolUltra_c0" value="Worker Pods — ultra-high-memory tasks" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#FDEAE7;strokeColor=#E43921;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="750" y="499" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="poolCpu" value='&lt;b&gt;Compute Optimised Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#7A8CA3"&gt;&lt;i&gt;CPU-optimised nodes&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=8;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#8CA3B8;strokeWidth=1.5;verticalAlign=top;spacingTop=4;fontSize=12;fontColor=#37474F;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="455" width="270" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="poolCpu_c0" value="Scheduler" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#E6F2FE;strokeColor=#017CEE;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="499" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="poolCpu_c1" value="Triggerer" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#FFF0EC;strokeColor=#FF7557;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="526" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="poolCpu_c2" value="Webserver" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#E6F7ED;strokeColor=#00AD46;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="553" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="poolCpu_c3" value="API Server" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#E7F7FF;strokeColor=#0CB6FF;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="580" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="user" value='&lt;b&gt;&lt;font color="#51504F"&gt;Users&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Data engineers · CI/CD&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#51504F;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="200" y="85" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ingress" value='&lt;b&gt;&lt;font color="#017CEE"&gt;Ingress / Load Balancer&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;TLS termination · routes UI &amp;amp; API&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#017CEE;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="575" y="85" width="290" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sched" value='&lt;b&gt;&lt;font color="#017CEE"&gt;Scheduler&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Schedules DAG runs&lt;br/&gt;&amp;amp; queues tasks&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#017CEE;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="160" y="260" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dagproc" value='&lt;b&gt;&lt;font color="#00C7D4"&gt;DAG Processor&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Parses DAG files&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#00C7D4;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="350" y="260" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="web" value='&lt;b&gt;&lt;font color="#00AD46"&gt;Webserver&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Airflow UI&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#00AD46;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="540" y="260" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value='&lt;b&gt;&lt;font color="#0CB6FF"&gt;API Server&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;REST &amp;amp; Execution API&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#0CB6FF;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="730" y="260" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="trig" value='&lt;b&gt;&lt;font color="#FF7557"&gt;Triggerer&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Async deferred&lt;br/&gt;operators&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#FF7557;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="920" y="260" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="work" value='&lt;b&gt;&lt;font color="#E43921"&gt;Workers&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Execute tasks&lt;br/&gt;(Kubernetes pods)&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#E43921;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="260" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="akv" value='&lt;b&gt;&lt;font color="#0078D4"&gt;Azure Key Vault&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;connections · variables · certs&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#0078D4;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="380" y="730" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="spc" value='&lt;b&gt;&lt;font color="#0078D4"&gt;SecretProviderClass&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Secrets Store CSI driver&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#0078D4;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="620" y="730" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="cfg" value='&lt;b&gt;&lt;font color="#326CE5"&gt;ConfigMaps &amp;amp; Helm values&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;airflow.cfg · environment vars&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#326CE5;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="860" y="730" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="alloy" value='&lt;b&gt;&lt;font color="#FB8C00"&gt;Grafana Alloy&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Log collector · DaemonSet&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#FB8C00;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="140" y="920" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="loki" value='&lt;b&gt;&lt;font color="#F9A825"&gt;Grafana Loki&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Log aggregation &amp;amp; storage&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#F9A825;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="430" y="920" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="graf" value='&lt;b&gt;&lt;font color="#F46800"&gt;Grafana&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Dashboards &amp;amp; alerting&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#F46800;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="720" y="920" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="prom" value='&lt;b&gt;&lt;font color="#E6522C"&gt;Prometheus&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Metrics · StatsD / OTel&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#E6522C;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="920" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="blob" value='&lt;b&gt;&lt;font color="#0078D4"&gt;Azure Blob Storage&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;DAG bundles · remote task logs&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#0078D4;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="180" y="1105" width="320" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="pg" value='&lt;b&gt;&lt;font color="#336791"&gt;PostgreSQL Metadata DB&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;DAG runs · task instances · connections · XComs&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#336791;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="900" y="1105" width="350" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#017CEE;endArrow=block;endFill=1;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="115" as="sourcePoint" />
+            <mxPoint x="575" y="115" as="targetPoint" />
+            
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#017CEE;endArrow=block;endFill=1;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="625" y="145" as="sourcePoint" />
+            <mxPoint x="625" y="260" as="targetPoint" />
+            
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#017CEE;endArrow=block;endFill=1;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="815" y="145" as="sourcePoint" />
+            <mxPoint x="815" y="260" as="targetPoint" />
+            
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#51504F;endArrow=block;endFill=1;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="720" y="370" as="sourcePoint" />
+            <mxPoint x="720" y="410" as="targetPoint" />
+            
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#8250DF;endArrow=block;endFill=1;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="765" as="sourcePoint" />
+            <mxPoint x="620" y="765" as="targetPoint" />
+            
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#8250DF;endArrow=block;endFill=1;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="720" y="730" as="sourcePoint" />
+            <mxPoint x="720" y="640" as="targetPoint" />
+            
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#8250DF;endArrow=block;endFill=1;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="960" y="730" as="sourcePoint" />
+            <mxPoint x="960" y="640" as="targetPoint" />
+            
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#F46800;endArrow=block;endFill=1;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="640" as="sourcePoint" />
+            <mxPoint x="310" y="920" as="targetPoint" />
+            
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#F46800;endArrow=block;endFill=1;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1120" y="640" as="sourcePoint" />
+            <mxPoint x="1120" y="920" as="targetPoint" />
+            
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#F46800;endArrow=block;endFill=1;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="360" y="955" as="sourcePoint" />
+            <mxPoint x="430" y="955" as="targetPoint" />
+            
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#F46800;endArrow=block;endFill=1;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="720" y="955" as="sourcePoint" />
+            <mxPoint x="650" y="955" as="targetPoint" />
+            
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#F46800;endArrow=block;endFill=1;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="940" y="955" as="sourcePoint" />
+            <mxPoint x="1010" y="955" as="targetPoint" />
+            
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#00AD46;endArrow=block;endFill=1;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1320" y="300" as="sourcePoint" />
+            <mxPoint x="1250" y="1140" as="targetPoint" />
+            <Array as="points"><mxPoint x="1380" y="300" /><mxPoint x="1380" y="1140" /></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note0" value="Pods scheduled onto node pools" style="text;html=1;fontSize=10;align=left;verticalAlign=top;fontColor=#51504F;" vertex="1" parent="1">
+          <mxGeometry x="735" y="377" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note1" value="Secrets &amp; config mounted&lt;br/&gt;into Airflow pods" style="text;html=1;fontSize=10;align=left;verticalAlign=top;fontColor=#8250DF;" vertex="1" parent="1">
+          <mxGeometry x="732" y="646" width="215" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note2" value="sync" style="text;html=1;fontSize=10;align=center;verticalAlign=top;fontColor=#8250DF;" vertex="1" parent="1">
+          <mxGeometry x="578" y="743" width="44" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note3" value="pod logs &amp; stdout" style="text;html=1;fontSize=10;align=left;verticalAlign=top;fontColor=#F46800;" vertex="1" parent="1">
+          <mxGeometry x="322" y="840" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note4" value="StatsD / OTel metrics" style="text;html=1;fontSize=10;align=right;verticalAlign=top;fontColor=#F46800;" vertex="1" parent="1">
+          <mxGeometry x="950" y="840" width="162" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note5" value="logs" style="text;html=1;fontSize=10;align=center;verticalAlign=top;fontColor=#F46800;" vertex="1" parent="1">
+          <mxGeometry x="373" y="934" width="44" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note6" value="query" style="text;html=1;fontSize=10;align=center;verticalAlign=top;fontColor=#F46800;" vertex="1" parent="1">
+          <mxGeometry x="658" y="934" width="54" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note7" value="query" style="text;html=1;fontSize=10;align=center;verticalAlign=top;fontColor=#F46800;" vertex="1" parent="1">
+          <mxGeometry x="948" y="934" width="54" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dbLabel" value="Metadata DB connections (all Airflow components)" style="text;html=1;fontSize=10;horizontal=0;align=center;verticalAlign=middle;fontColor=#00AD46;" vertex="1" parent="1">
+          <mxGeometry x="1388" y="560" width="26" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="legSw0" value="" style="rounded=1;arcSize=50;fillColor=#017CEE;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="140" y="1254" width="36" height="5" as="geometry" />
+        </mxCell>
+        <mxCell id="legTx0" value="User / HTTP traffic" style="text;html=1;fontSize=11;align=left;verticalAlign=middle;fontColor=#51504F;" vertex="1" parent="1">
+          <mxGeometry x="184" y="1245" width="170" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="legSw1" value="" style="rounded=1;arcSize=50;fillColor=#51504F;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="350" y="1254" width="36" height="5" as="geometry" />
+        </mxCell>
+        <mxCell id="legTx1" value="Pod scheduling" style="text;html=1;fontSize=11;align=left;verticalAlign=middle;fontColor=#51504F;" vertex="1" parent="1">
+          <mxGeometry x="394" y="1245" width="170" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="legSw2" value="" style="rounded=1;arcSize=50;fillColor=#8250DF;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="545" y="1254" width="36" height="5" as="geometry" />
+        </mxCell>
+        <mxCell id="legTx2" value="Secrets &amp; configuration" style="text;html=1;fontSize=11;align=left;verticalAlign=middle;fontColor=#51504F;" vertex="1" parent="1">
+          <mxGeometry x="589" y="1245" width="170" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="legSw3" value="" style="rounded=1;arcSize=50;fillColor=#F46800;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="775" y="1254" width="36" height="5" as="geometry" />
+        </mxCell>
+        <mxCell id="legTx3" value="Metrics &amp; logs" style="text;html=1;fontSize=11;align=left;verticalAlign=middle;fontColor=#51504F;" vertex="1" parent="1">
+          <mxGeometry x="819" y="1245" width="170" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="legSw4" value="" style="rounded=1;arcSize=50;fillColor=#00AD46;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="975" y="1254" width="36" height="5" as="geometry" />
+        </mxCell>
+        <mxCell id="legTx4" value="Database connections" style="text;html=1;fontSize=11;align=left;verticalAlign=middle;fontColor=#51504F;" vertex="1" parent="1">
+          <mxGeometry x="1019" y="1245" width="170" height="22" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
