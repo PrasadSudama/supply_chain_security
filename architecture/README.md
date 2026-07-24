@@ -32,8 +32,12 @@ can never appear as broken images.
    pod per task, KubernetesExecutor — no celery, no redis/broker), API Server
    (web UI + REST + execution API, :8080, 2 replicas HA).
 3. **Kubernetes Node Pools Layer (AKS)** — the scheduler launches task pods
-   via the k8s API; nodeSelector + tolerations set in `pod_override`:
-   - **Airflow Pool** — core components (`nodeSelector: pool=airflow`)
+   via the k8s API; nodeSelector + tolerations set in `pod_override`.
+   Components are detailed once in their own layer; pools state placement:
+   - **Airflow Pool** — Airflow core services (`nodeSelector: pool=airflow`)
+   - **Observability Pool** — monitoring stack
+     (`nodeSelector: pool=observability`); Alloy runs as a daemonset on
+     every pool
    - **Jobs Pool** — standard ETL tasks (`taint: workload=jobs`)
    - **High Memory Pool** — large ETL / dataframe workloads
      (`taint: workload=high-mem`), autoscales 0→N

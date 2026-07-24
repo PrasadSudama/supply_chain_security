@@ -65,19 +65,28 @@ BOXES = [
 ]
 
 # ------------------------------------------------------------------ pools --
-POOL_Y, POOL_W, POOL_H = 450, 200, 165
-# x, title, subtitle, kind ('core' with chips | 'worker'), detail lines
+POOL_Y, POOL_W, POOL_H = 450, 170, 165
+# x, title, subtitle, desc_title, desc_sub, dashed_note, foot
+# components are detailed once, in their own layer; pools only state placement
 POOLS = [
-    (230, "Airflow Pool",           "core components",         "core",
-     ["Scheduler", "API Server", "DAG Processor", "Triggerer"], "nodeSelector: pool=airflow"),
-    (445, "Jobs Pool",              "general task execution",  "worker",
-     ["standard ETL tasks", "cluster autoscaler enabled"],      "taint: workload=jobs"),
-    (660, "High Memory Pool",       "memory-intensive tasks",  "worker",
-     ["large ETL / dataframe workloads", "autoscales 0 to N, no idle cost"], "taint: workload=high-mem"),
-    (875, "Ultra High Memory Pool", "very large in-memory jobs", "worker",
-     ["very large in-memory workloads", "scale from zero on demand"], "taint: workload=ultra-high-mem"),
-    (1090, "Compute Optimised Pool", "CPU-intensive tasks",    "worker",
-     ["CPU-bound task workloads", "cluster autoscaler enabled"], "taint: workload=compute-opt"),
+    (215, "Airflow Pool",           "core services",
+     "Airflow core services", "(see Airflow core layer)",
+     "2 replicas each · HA spread",     "nodeSelector: pool=airflow"),
+    (399, "Observability Pool",     "monitoring stack",
+     "Observability services", "(see observability layer)",
+     "Alloy daemonset on every pool",   "nodeSelector: pool=observability"),
+    (583, "Jobs Pool",              "general task execution",
+     "Worker task pods", "standard ETL tasks",
+     "cluster autoscaler enabled",      "taint: workload=jobs"),
+    (767, "High Memory Pool",       "memory-intensive tasks",
+     "Worker task pods", "large ETL / dataframe workloads",
+     "autoscales 0 to N, no idle cost", "taint: workload=high-mem"),
+    (951, "Ultra High Memory Pool", "very large in-memory jobs",
+     "Worker task pods", "very large in-memory workloads",
+     "scale from zero on demand",       "taint: workload=ultra-high-mem"),
+    (1135, "Compute Optimised Pool", "CPU-intensive tasks",
+     "Worker task pods", "CPU-bound task workloads",
+     "cluster autoscaler enabled",      "taint: workload=compute-opt"),
 ]
 
 # ------------------------------------------------------------------ icons --
@@ -130,7 +139,7 @@ EDGES = [
     ("laun", GREENL, False, False, [(652, 355), (652, 415)]),
     ("kv1",  RED,   False, False, [(350, 740), (528, 740)]),
     ("kv2",  RED,   False, False, [(738, 740), (878, 740)]),
-    ("sec",  RED,   True,  False, [(995, 715), (995, 670), (867, 670), (867, 355)]),
+    ("sec",  RED,   True,  False, [(995, 715), (995, 670), (944, 670), (944, 355)]),
     ("logs", OBS,   False, False, [(1320, 310), (1345, 310), (1345, 840), (360, 840), (360, 910)]),
     ("mets", OBS,   False, False, [(1320, 295), (1365, 295), (1365, 850), (892, 850), (892, 910)]),
     ("o1",   OBS,   False, False, [(455, 935), (530, 935)]),
@@ -149,7 +158,7 @@ NOTES = [
     ("executor: KubernetesExecutor (no celery, no redis/broker)", 228, 340, 8.5, TEALD, "left"),
     ("scheduler launches task pods via k8s API\nnodeSelector + tolerations set in pod_override",
                                                               535,  378, 9,   GREENL, "center"),
-    ("secrets mounted into Airflow pods (volumes / env)",     880,  378, 9,   RED,   "left"),
+    ("secrets mounted into Airflow pods (volumes / env)",     958,  378, 9,   RED,   "left"),
     ("secrets sync",                                          400,  731, 8.5, RED,   "center"),
     ("access via Microsoft Entra Workload ID (no static credentials)", 228, 816, 8.5, REDT, "left"),
     ("container logs (all pods)",                             420,  834, 8.5, OBS,   "left"),
@@ -210,7 +219,7 @@ def drawio() -> str:
             f"spacingTop=4;fontSize=10;fontStyle=1;fontColor={fc};", x, y, w, h)
 
     # pools
-    for px, ptitle, psub, kind, details, foot in POOLS:
+    for px, ptitle, psub, dtitle, dsub, dashed_note, foot in POOLS:
         pid = "pool" + str(px)
         vtx(pid,
             f'<b>{escape(ptitle)}</b><br/><font style="font-size:8px;" color="{GRAYT}">'
@@ -218,23 +227,15 @@ def drawio() -> str:
             f"rounded=1;arcSize=10;html=1;whiteSpace=wrap;fillColor=#FFFFFF;"
             f"strokeColor={GREENB};strokeWidth=1.5;verticalAlign=top;spacingTop=2;"
             f"fontSize=10;fontColor={GREENL};", px, POOL_Y, POOL_W, POOL_H)
-        if kind == "core":
-            for i, chip in enumerate(details):
-                cx0 = px + 11 + (i % 2) * 92
-                cy0 = POOL_Y + 42 + (i // 2) * 29
-                vtx(f"{pid}_c{i}", chip,
-                    f"rounded=1;arcSize=30;html=1;fillColor=#E3F3E4;strokeColor=#66BB6A;"
-                    f"fontSize=8.5;fontColor=#2E5432;", cx0, cy0, 86, 24)
-        else:
-            vtx(f"{pid}_w", f'<b>Worker task pods</b><br/>'
-                f'<font style="font-size:8px;" color="{SUBG}">{escape(details[0])}</font>',
-                f"rounded=1;arcSize=14;html=1;whiteSpace=wrap;fillColor=#E3F3E4;"
-                f"strokeColor={GREENB};fontSize=9;fontColor={GREENL};align=center;"
-                f"verticalAlign=middle;", px + 12, POOL_Y + 42, 176, 40)
-            vtx(f"{pid}_d", details[1],
-                f"rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#F3FAF3;"
-                f"strokeColor=#7CB56A;dashed=1;fontSize=8.5;fontColor=#4C9A55;",
-                px + 12, POOL_Y + 92, 176, 26)
+        vtx(f"{pid}_w", f'<b>{escape(dtitle)}</b><br/>'
+            f'<font style="font-size:8px;" color="{SUBG}">{escape(dsub)}</font>',
+            f"rounded=1;arcSize=14;html=1;whiteSpace=wrap;fillColor=#E3F3E4;"
+            f"strokeColor={GREENB};fontSize=9;fontColor={GREENL};align=center;"
+            f"verticalAlign=middle;", px + 12, POOL_Y + 42, POOL_W - 24, 40)
+        vtx(f"{pid}_d", dashed_note,
+            f"rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#F3FAF3;"
+            f"strokeColor=#7CB56A;dashed=1;fontSize=8;fontColor=#4C9A55;",
+            px + 12, POOL_Y + 92, POOL_W - 24, 26)
         note(f"{pid}_f", foot, px, POOL_Y + 138, POOL_W, 8, GRAYT, "center")
 
     for bid, btitle, subs, col, x, y, w, h in BOXES:
@@ -335,28 +336,20 @@ def svg() -> str:
         text(x + 12, y + 18, label, 10, fc, bold=True)
 
     # pools
-    for px, ptitle, psub, kind, details, foot in POOLS:
+    for px, ptitle, psub, dtitle, dsub, dashed_note, foot in POOLS:
         out.append(f'<rect x="{px}" y="{POOL_Y}" width="{POOL_W}" height="{POOL_H}" rx="10" '
                    f'fill="#ffffff" stroke="{GREENB}" stroke-width="1.5"/>')
-        text(px + POOL_W / 2, POOL_Y + 18, ptitle, 10.5, GREENL, anchor="middle", bold=True)
+        text(px + POOL_W / 2, POOL_Y + 18, ptitle, 10, GREENL, anchor="middle", bold=True)
         text(px + POOL_W / 2, POOL_Y + 31, psub, 8, GRAYT, anchor="middle", italic=True)
-        if kind == "core":
-            for i, chip in enumerate(details):
-                cx0 = px + 11 + (i % 2) * 92
-                cy0 = POOL_Y + 42 + (i // 2) * 29
-                out.append(f'<rect x="{cx0}" y="{cy0}" width="86" height="24" rx="8" '
-                           f'fill="#E3F3E4" stroke="#66BB6A"/>')
-                text(cx0 + 43, cy0 + 15.5, chip, 8.5, "#2E5432", anchor="middle")
-        else:
-            bx = px + 12
-            out.append(f'<rect x="{bx}" y="{POOL_Y + 42}" width="176" height="40" rx="7" '
-                       f'fill="#E3F3E4" stroke="{GREENB}"/>')
-            text(px + POOL_W / 2, POOL_Y + 58, "Worker task pods", 9.5, GREENL,
-                 anchor="middle", bold=True)
-            text(px + POOL_W / 2, POOL_Y + 71, details[0], 8, SUBG, anchor="middle")
-            out.append(f'<rect x="{bx}" y="{POOL_Y + 92}" width="176" height="26" rx="6" '
-                       f'fill="#F3FAF3" stroke="#7CB56A" stroke-dasharray="4,3"/>')
-            text(px + POOL_W / 2, POOL_Y + 108, details[1], 8.5, "#4C9A55", anchor="middle")
+        bx = px + 12
+        bw = POOL_W - 24
+        out.append(f'<rect x="{bx}" y="{POOL_Y + 42}" width="{bw}" height="40" rx="7" '
+                   f'fill="#E3F3E4" stroke="{GREENB}"/>')
+        text(px + POOL_W / 2, POOL_Y + 58, dtitle, 9, GREENL, anchor="middle", bold=True)
+        text(px + POOL_W / 2, POOL_Y + 71, dsub, 8, SUBG, anchor="middle")
+        out.append(f'<rect x="{bx}" y="{POOL_Y + 92}" width="{bw}" height="26" rx="6" '
+                   f'fill="#F3FAF3" stroke="#7CB56A" stroke-dasharray="4,3"/>')
+        text(px + POOL_W / 2, POOL_Y + 108, dashed_note, 8, "#4C9A55", anchor="middle")
         text(px + POOL_W / 2, POOL_Y + 147, foot, 8, GRAYT, anchor="middle")
 
     for _, btitle, subs, col, x, y, w, h in BOXES:

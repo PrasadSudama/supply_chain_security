@@ -28,71 +28,77 @@
         <mxCell id="L6" value="METADATA &amp; STORAGE LAYER" style="rounded=1;arcSize=6;html=1;whiteSpace=wrap;fillColor=#E1F6F7;strokeColor=#4FC3CF;verticalAlign=top;align=left;spacingLeft=12;spacingTop=4;fontSize=10;fontStyle=1;fontColor=#00838F;" vertex="1" parent="1">
           <mxGeometry x="200" y="1050" width="1120" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="pool230" value='&lt;b&gt;Airflow Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#7A8CA3"&gt;&lt;i&gt;core components&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#43A047;strokeWidth=1.5;verticalAlign=top;spacingTop=2;fontSize=10;fontColor=#2E7D32;" vertex="1" parent="1">
-          <mxGeometry x="230" y="450" width="200" height="165" as="geometry" />
+        <mxCell id="pool215" value='&lt;b&gt;Airflow Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#7A8CA3"&gt;&lt;i&gt;core services&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#43A047;strokeWidth=1.5;verticalAlign=top;spacingTop=2;fontSize=10;fontColor=#2E7D32;" vertex="1" parent="1">
+          <mxGeometry x="215" y="450" width="170" height="165" as="geometry" />
         </mxCell>
-        <mxCell id="pool230_c0" value="Scheduler" style="rounded=1;arcSize=30;html=1;fillColor=#E3F3E4;strokeColor=#66BB6A;fontSize=8.5;fontColor=#2E5432;" vertex="1" parent="1">
-          <mxGeometry x="241" y="492" width="86" height="24" as="geometry" />
+        <mxCell id="pool215_w" value='&lt;b&gt;Airflow core services&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#6B7B8D"&gt;(see Airflow core layer)&lt;/font&gt;' style="rounded=1;arcSize=14;html=1;whiteSpace=wrap;fillColor=#E3F3E4;strokeColor=#43A047;fontSize=9;fontColor=#2E7D32;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="227" y="492" width="146" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="pool230_c1" value="API Server" style="rounded=1;arcSize=30;html=1;fillColor=#E3F3E4;strokeColor=#66BB6A;fontSize=8.5;fontColor=#2E5432;" vertex="1" parent="1">
-          <mxGeometry x="333" y="492" width="86" height="24" as="geometry" />
+        <mxCell id="pool215_d" value="2 replicas each · HA spread" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#F3FAF3;strokeColor=#7CB56A;dashed=1;fontSize=8;fontColor=#4C9A55;" vertex="1" parent="1">
+          <mxGeometry x="227" y="542" width="146" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="pool230_c2" value="DAG Processor" style="rounded=1;arcSize=30;html=1;fillColor=#E3F3E4;strokeColor=#66BB6A;fontSize=8.5;fontColor=#2E5432;" vertex="1" parent="1">
-          <mxGeometry x="241" y="521" width="86" height="24" as="geometry" />
+        <mxCell id="pool215_f" value="nodeSelector: pool=airflow" style="text;html=1;fontSize=8;align=center;verticalAlign=top;fontColor=#7A8CA3;" vertex="1" parent="1">
+          <mxGeometry x="215" y="588" width="170" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="pool230_c3" value="Triggerer" style="rounded=1;arcSize=30;html=1;fillColor=#E3F3E4;strokeColor=#66BB6A;fontSize=8.5;fontColor=#2E5432;" vertex="1" parent="1">
-          <mxGeometry x="333" y="521" width="86" height="24" as="geometry" />
+        <mxCell id="pool399" value='&lt;b&gt;Observability Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#7A8CA3"&gt;&lt;i&gt;monitoring stack&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#43A047;strokeWidth=1.5;verticalAlign=top;spacingTop=2;fontSize=10;fontColor=#2E7D32;" vertex="1" parent="1">
+          <mxGeometry x="399" y="450" width="170" height="165" as="geometry" />
         </mxCell>
-        <mxCell id="pool230_f" value="nodeSelector: pool=airflow" style="text;html=1;fontSize=8;align=center;verticalAlign=top;fontColor=#7A8CA3;" vertex="1" parent="1">
-          <mxGeometry x="230" y="588" width="200" height="20" as="geometry" />
+        <mxCell id="pool399_w" value='&lt;b&gt;Observability services&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#6B7B8D"&gt;(see observability layer)&lt;/font&gt;' style="rounded=1;arcSize=14;html=1;whiteSpace=wrap;fillColor=#E3F3E4;strokeColor=#43A047;fontSize=9;fontColor=#2E7D32;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="411" y="492" width="146" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="pool445" value='&lt;b&gt;Jobs Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#7A8CA3"&gt;&lt;i&gt;general task execution&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#43A047;strokeWidth=1.5;verticalAlign=top;spacingTop=2;fontSize=10;fontColor=#2E7D32;" vertex="1" parent="1">
-          <mxGeometry x="445" y="450" width="200" height="165" as="geometry" />
+        <mxCell id="pool399_d" value="Alloy daemonset on every pool" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#F3FAF3;strokeColor=#7CB56A;dashed=1;fontSize=8;fontColor=#4C9A55;" vertex="1" parent="1">
+          <mxGeometry x="411" y="542" width="146" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="pool445_w" value='&lt;b&gt;Worker task pods&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#6B7B8D"&gt;standard ETL tasks&lt;/font&gt;' style="rounded=1;arcSize=14;html=1;whiteSpace=wrap;fillColor=#E3F3E4;strokeColor=#43A047;fontSize=9;fontColor=#2E7D32;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="457" y="492" width="176" height="40" as="geometry" />
+        <mxCell id="pool399_f" value="nodeSelector: pool=observability" style="text;html=1;fontSize=8;align=center;verticalAlign=top;fontColor=#7A8CA3;" vertex="1" parent="1">
+          <mxGeometry x="399" y="588" width="170" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="pool445_d" value="cluster autoscaler enabled" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#F3FAF3;strokeColor=#7CB56A;dashed=1;fontSize=8.5;fontColor=#4C9A55;" vertex="1" parent="1">
-          <mxGeometry x="457" y="542" width="176" height="26" as="geometry" />
+        <mxCell id="pool583" value='&lt;b&gt;Jobs Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#7A8CA3"&gt;&lt;i&gt;general task execution&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#43A047;strokeWidth=1.5;verticalAlign=top;spacingTop=2;fontSize=10;fontColor=#2E7D32;" vertex="1" parent="1">
+          <mxGeometry x="583" y="450" width="170" height="165" as="geometry" />
         </mxCell>
-        <mxCell id="pool445_f" value="taint: workload=jobs" style="text;html=1;fontSize=8;align=center;verticalAlign=top;fontColor=#7A8CA3;" vertex="1" parent="1">
-          <mxGeometry x="445" y="588" width="200" height="20" as="geometry" />
+        <mxCell id="pool583_w" value='&lt;b&gt;Worker task pods&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#6B7B8D"&gt;standard ETL tasks&lt;/font&gt;' style="rounded=1;arcSize=14;html=1;whiteSpace=wrap;fillColor=#E3F3E4;strokeColor=#43A047;fontSize=9;fontColor=#2E7D32;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="595" y="492" width="146" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="pool660" value='&lt;b&gt;High Memory Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#7A8CA3"&gt;&lt;i&gt;memory-intensive tasks&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#43A047;strokeWidth=1.5;verticalAlign=top;spacingTop=2;fontSize=10;fontColor=#2E7D32;" vertex="1" parent="1">
-          <mxGeometry x="660" y="450" width="200" height="165" as="geometry" />
+        <mxCell id="pool583_d" value="cluster autoscaler enabled" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#F3FAF3;strokeColor=#7CB56A;dashed=1;fontSize=8;fontColor=#4C9A55;" vertex="1" parent="1">
+          <mxGeometry x="595" y="542" width="146" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="pool660_w" value='&lt;b&gt;Worker task pods&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#6B7B8D"&gt;large ETL / dataframe workloads&lt;/font&gt;' style="rounded=1;arcSize=14;html=1;whiteSpace=wrap;fillColor=#E3F3E4;strokeColor=#43A047;fontSize=9;fontColor=#2E7D32;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="672" y="492" width="176" height="40" as="geometry" />
+        <mxCell id="pool583_f" value="taint: workload=jobs" style="text;html=1;fontSize=8;align=center;verticalAlign=top;fontColor=#7A8CA3;" vertex="1" parent="1">
+          <mxGeometry x="583" y="588" width="170" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="pool660_d" value="autoscales 0 to N, no idle cost" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#F3FAF3;strokeColor=#7CB56A;dashed=1;fontSize=8.5;fontColor=#4C9A55;" vertex="1" parent="1">
-          <mxGeometry x="672" y="542" width="176" height="26" as="geometry" />
+        <mxCell id="pool767" value='&lt;b&gt;High Memory Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#7A8CA3"&gt;&lt;i&gt;memory-intensive tasks&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#43A047;strokeWidth=1.5;verticalAlign=top;spacingTop=2;fontSize=10;fontColor=#2E7D32;" vertex="1" parent="1">
+          <mxGeometry x="767" y="450" width="170" height="165" as="geometry" />
         </mxCell>
-        <mxCell id="pool660_f" value="taint: workload=high-mem" style="text;html=1;fontSize=8;align=center;verticalAlign=top;fontColor=#7A8CA3;" vertex="1" parent="1">
-          <mxGeometry x="660" y="588" width="200" height="20" as="geometry" />
+        <mxCell id="pool767_w" value='&lt;b&gt;Worker task pods&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#6B7B8D"&gt;large ETL / dataframe workloads&lt;/font&gt;' style="rounded=1;arcSize=14;html=1;whiteSpace=wrap;fillColor=#E3F3E4;strokeColor=#43A047;fontSize=9;fontColor=#2E7D32;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="779" y="492" width="146" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="pool875" value='&lt;b&gt;Ultra High Memory Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#7A8CA3"&gt;&lt;i&gt;very large in-memory jobs&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#43A047;strokeWidth=1.5;verticalAlign=top;spacingTop=2;fontSize=10;fontColor=#2E7D32;" vertex="1" parent="1">
-          <mxGeometry x="875" y="450" width="200" height="165" as="geometry" />
+        <mxCell id="pool767_d" value="autoscales 0 to N, no idle cost" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#F3FAF3;strokeColor=#7CB56A;dashed=1;fontSize=8;fontColor=#4C9A55;" vertex="1" parent="1">
+          <mxGeometry x="779" y="542" width="146" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="pool875_w" value='&lt;b&gt;Worker task pods&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#6B7B8D"&gt;very large in-memory workloads&lt;/font&gt;' style="rounded=1;arcSize=14;html=1;whiteSpace=wrap;fillColor=#E3F3E4;strokeColor=#43A047;fontSize=9;fontColor=#2E7D32;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="887" y="492" width="176" height="40" as="geometry" />
+        <mxCell id="pool767_f" value="taint: workload=high-mem" style="text;html=1;fontSize=8;align=center;verticalAlign=top;fontColor=#7A8CA3;" vertex="1" parent="1">
+          <mxGeometry x="767" y="588" width="170" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="pool875_d" value="scale from zero on demand" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#F3FAF3;strokeColor=#7CB56A;dashed=1;fontSize=8.5;fontColor=#4C9A55;" vertex="1" parent="1">
-          <mxGeometry x="887" y="542" width="176" height="26" as="geometry" />
+        <mxCell id="pool951" value='&lt;b&gt;Ultra High Memory Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#7A8CA3"&gt;&lt;i&gt;very large in-memory jobs&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#43A047;strokeWidth=1.5;verticalAlign=top;spacingTop=2;fontSize=10;fontColor=#2E7D32;" vertex="1" parent="1">
+          <mxGeometry x="951" y="450" width="170" height="165" as="geometry" />
         </mxCell>
-        <mxCell id="pool875_f" value="taint: workload=ultra-high-mem" style="text;html=1;fontSize=8;align=center;verticalAlign=top;fontColor=#7A8CA3;" vertex="1" parent="1">
-          <mxGeometry x="875" y="588" width="200" height="20" as="geometry" />
+        <mxCell id="pool951_w" value='&lt;b&gt;Worker task pods&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#6B7B8D"&gt;very large in-memory workloads&lt;/font&gt;' style="rounded=1;arcSize=14;html=1;whiteSpace=wrap;fillColor=#E3F3E4;strokeColor=#43A047;fontSize=9;fontColor=#2E7D32;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="963" y="492" width="146" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="pool1090" value='&lt;b&gt;Compute Optimised Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#7A8CA3"&gt;&lt;i&gt;CPU-intensive tasks&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#43A047;strokeWidth=1.5;verticalAlign=top;spacingTop=2;fontSize=10;fontColor=#2E7D32;" vertex="1" parent="1">
-          <mxGeometry x="1090" y="450" width="200" height="165" as="geometry" />
+        <mxCell id="pool951_d" value="scale from zero on demand" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#F3FAF3;strokeColor=#7CB56A;dashed=1;fontSize=8;fontColor=#4C9A55;" vertex="1" parent="1">
+          <mxGeometry x="963" y="542" width="146" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="pool1090_w" value='&lt;b&gt;Worker task pods&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#6B7B8D"&gt;CPU-bound task workloads&lt;/font&gt;' style="rounded=1;arcSize=14;html=1;whiteSpace=wrap;fillColor=#E3F3E4;strokeColor=#43A047;fontSize=9;fontColor=#2E7D32;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="1102" y="492" width="176" height="40" as="geometry" />
+        <mxCell id="pool951_f" value="taint: workload=ultra-high-mem" style="text;html=1;fontSize=8;align=center;verticalAlign=top;fontColor=#7A8CA3;" vertex="1" parent="1">
+          <mxGeometry x="951" y="588" width="170" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="pool1090_d" value="cluster autoscaler enabled" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#F3FAF3;strokeColor=#7CB56A;dashed=1;fontSize=8.5;fontColor=#4C9A55;" vertex="1" parent="1">
-          <mxGeometry x="1102" y="542" width="176" height="26" as="geometry" />
+        <mxCell id="pool1135" value='&lt;b&gt;Compute Optimised Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#7A8CA3"&gt;&lt;i&gt;CPU-intensive tasks&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#43A047;strokeWidth=1.5;verticalAlign=top;spacingTop=2;fontSize=10;fontColor=#2E7D32;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="450" width="170" height="165" as="geometry" />
         </mxCell>
-        <mxCell id="pool1090_f" value="taint: workload=compute-opt" style="text;html=1;fontSize=8;align=center;verticalAlign=top;fontColor=#7A8CA3;" vertex="1" parent="1">
-          <mxGeometry x="1090" y="588" width="200" height="20" as="geometry" />
+        <mxCell id="pool1135_w" value='&lt;b&gt;Worker task pods&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#6B7B8D"&gt;CPU-bound task workloads&lt;/font&gt;' style="rounded=1;arcSize=14;html=1;whiteSpace=wrap;fillColor=#E3F3E4;strokeColor=#43A047;fontSize=9;fontColor=#2E7D32;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1147" y="492" width="146" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pool1135_d" value="cluster autoscaler enabled" style="rounded=1;arcSize=20;html=1;whiteSpace=wrap;fillColor=#F3FAF3;strokeColor=#7CB56A;dashed=1;fontSize=8;fontColor=#4C9A55;" vertex="1" parent="1">
+          <mxGeometry x="1147" y="542" width="146" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="pool1135_f" value="taint: workload=compute-opt" style="text;html=1;fontSize=8;align=center;verticalAlign=top;fontColor=#7A8CA3;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="588" width="170" height="20" as="geometry" />
         </mxCell>
         <mxCell id="nginx" value='&lt;b&gt;&lt;font color="#1E88E5"&gt;NGINX Ingress Controller&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:8px;" color="#6B7B8D"&gt;TLS 1.2+ · :443 · cert-manager&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#1E88E5;strokeWidth=1.7;align=center;verticalAlign=middle;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
           <mxGeometry x="1005" y="80" width="210" height="55" as="geometry" />
@@ -227,8 +233,8 @@
         <mxCell id="sec" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=1.7;strokeColor=#D32F2F;endArrow=block;endFill=1;endSize=5;dashed=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="995" y="715" as="sourcePoint" />
-            <mxPoint x="867" y="355" as="targetPoint" />
-            <Array as="points"><mxPoint x="995" y="670" /><mxPoint x="867" y="670" /></Array>
+            <mxPoint x="944" y="355" as="targetPoint" />
+            <Array as="points"><mxPoint x="995" y="670" /><mxPoint x="944" y="670" /></Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="logs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=1.7;strokeColor=#D84315;endArrow=block;endFill=1;endSize=5;" edge="1" parent="1">
@@ -300,7 +306,7 @@
           <mxGeometry x="365.0" y="368" width="340" height="34" as="geometry" />
         </mxCell>
         <mxCell id="note4" value="secrets mounted into Airflow pods (volumes / env)" style="text;html=1;fontSize=9;align=left;verticalAlign=top;fontColor=#D32F2F;" vertex="1" parent="1">
-          <mxGeometry x="880" y="368" width="340" height="20" as="geometry" />
+          <mxGeometry x="958" y="368" width="340" height="20" as="geometry" />
         </mxCell>
         <mxCell id="note5" value="secrets sync" style="text;html=1;fontSize=8.5;align=center;verticalAlign=top;fontColor=#D32F2F;" vertex="1" parent="1">
           <mxGeometry x="230.0" y="721" width="340" height="20" as="geometry" />

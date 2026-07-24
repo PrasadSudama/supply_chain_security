@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1240" viewBox="0 0 1440 1240" font-family="Rubik, 'Segoe UI', Helvetica, Arial, sans-serif">
 <defs>
-<marker id="mD84315" markerWidth="9" markerHeight="9" refX="6.5" refY="3.5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 z" fill="#D84315"/></marker>
-<marker id="m26A69A" markerWidth="9" markerHeight="9" refX="6.5" refY="3.5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 z" fill="#26A69A"/></marker>
-<marker id="mD32F2F" markerWidth="9" markerHeight="9" refX="6.5" refY="3.5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 z" fill="#D32F2F"/></marker>
 <marker id="m1565C0" markerWidth="9" markerHeight="9" refX="6.5" refY="3.5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 z" fill="#1565C0"/></marker>
-<marker id="m2E7D32" markerWidth="9" markerHeight="9" refX="6.5" refY="3.5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 z" fill="#2E7D32"/></marker>
+<marker id="mD84315" markerWidth="9" markerHeight="9" refX="6.5" refY="3.5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 z" fill="#D84315"/></marker>
 <marker id="m00838F" markerWidth="9" markerHeight="9" refX="6.5" refY="3.5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 z" fill="#00838F"/></marker>
+<marker id="mD32F2F" markerWidth="9" markerHeight="9" refX="6.5" refY="3.5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 z" fill="#D32F2F"/></marker>
+<marker id="m2E7D32" markerWidth="9" markerHeight="9" refX="6.5" refY="3.5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 z" fill="#2E7D32"/></marker>
+<marker id="m26A69A" markerWidth="9" markerHeight="9" refX="6.5" refY="3.5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 z" fill="#26A69A"/></marker>
 </defs>
 <rect width="1440" height="1240" fill="#ffffff"/>
 <text x="760" y="20" font-size="15" fill="#017CEE" text-anchor="middle" font-weight="600">Airflow 3.2 on AKS · Cloud Solutions Working Architecture</text>
@@ -22,54 +22,60 @@
 <text x="212" y="888" font-size="10" fill="#D84315" text-anchor="start" font-weight="600">OBSERVABILITY LAYER</text>
 <rect x="200" y="1050" width="1120" height="140" rx="10" fill="#E1F6F7" stroke="#4FC3CF"/>
 <text x="212" y="1068" font-size="10" fill="#00838F" text-anchor="start" font-weight="600">METADATA &amp; STORAGE LAYER</text>
-<rect x="230" y="450" width="200" height="165" rx="10" fill="#ffffff" stroke="#43A047" stroke-width="1.5"/>
-<text x="330.0" y="468" font-size="10.5" fill="#2E7D32" text-anchor="middle" font-weight="600">Airflow Pool</text>
-<text x="330.0" y="481" font-size="8" fill="#7A8CA3" text-anchor="middle" font-style="italic">core components</text>
-<rect x="241" y="492" width="86" height="24" rx="8" fill="#E3F3E4" stroke="#66BB6A"/>
-<text x="284" y="507.5" font-size="8.5" fill="#2E5432" text-anchor="middle">Scheduler</text>
-<rect x="333" y="492" width="86" height="24" rx="8" fill="#E3F3E4" stroke="#66BB6A"/>
-<text x="376" y="507.5" font-size="8.5" fill="#2E5432" text-anchor="middle">API Server</text>
-<rect x="241" y="521" width="86" height="24" rx="8" fill="#E3F3E4" stroke="#66BB6A"/>
-<text x="284" y="536.5" font-size="8.5" fill="#2E5432" text-anchor="middle">DAG Processor</text>
-<rect x="333" y="521" width="86" height="24" rx="8" fill="#E3F3E4" stroke="#66BB6A"/>
-<text x="376" y="536.5" font-size="8.5" fill="#2E5432" text-anchor="middle">Triggerer</text>
-<text x="330.0" y="597" font-size="8" fill="#7A8CA3" text-anchor="middle">nodeSelector: pool=airflow</text>
-<rect x="445" y="450" width="200" height="165" rx="10" fill="#ffffff" stroke="#43A047" stroke-width="1.5"/>
-<text x="545.0" y="468" font-size="10.5" fill="#2E7D32" text-anchor="middle" font-weight="600">Jobs Pool</text>
-<text x="545.0" y="481" font-size="8" fill="#7A8CA3" text-anchor="middle" font-style="italic">general task execution</text>
-<rect x="457" y="492" width="176" height="40" rx="7" fill="#E3F3E4" stroke="#43A047"/>
-<text x="545.0" y="508" font-size="9.5" fill="#2E7D32" text-anchor="middle" font-weight="600">Worker task pods</text>
-<text x="545.0" y="521" font-size="8" fill="#6B7B8D" text-anchor="middle">standard ETL tasks</text>
-<rect x="457" y="542" width="176" height="26" rx="6" fill="#F3FAF3" stroke="#7CB56A" stroke-dasharray="4,3"/>
-<text x="545.0" y="558" font-size="8.5" fill="#4C9A55" text-anchor="middle">cluster autoscaler enabled</text>
-<text x="545.0" y="597" font-size="8" fill="#7A8CA3" text-anchor="middle">taint: workload=jobs</text>
-<rect x="660" y="450" width="200" height="165" rx="10" fill="#ffffff" stroke="#43A047" stroke-width="1.5"/>
-<text x="760.0" y="468" font-size="10.5" fill="#2E7D32" text-anchor="middle" font-weight="600">High Memory Pool</text>
-<text x="760.0" y="481" font-size="8" fill="#7A8CA3" text-anchor="middle" font-style="italic">memory-intensive tasks</text>
-<rect x="672" y="492" width="176" height="40" rx="7" fill="#E3F3E4" stroke="#43A047"/>
-<text x="760.0" y="508" font-size="9.5" fill="#2E7D32" text-anchor="middle" font-weight="600">Worker task pods</text>
-<text x="760.0" y="521" font-size="8" fill="#6B7B8D" text-anchor="middle">large ETL / dataframe workloads</text>
-<rect x="672" y="542" width="176" height="26" rx="6" fill="#F3FAF3" stroke="#7CB56A" stroke-dasharray="4,3"/>
-<text x="760.0" y="558" font-size="8.5" fill="#4C9A55" text-anchor="middle">autoscales 0 to N, no idle cost</text>
-<text x="760.0" y="597" font-size="8" fill="#7A8CA3" text-anchor="middle">taint: workload=high-mem</text>
-<rect x="875" y="450" width="200" height="165" rx="10" fill="#ffffff" stroke="#43A047" stroke-width="1.5"/>
-<text x="975.0" y="468" font-size="10.5" fill="#2E7D32" text-anchor="middle" font-weight="600">Ultra High Memory Pool</text>
-<text x="975.0" y="481" font-size="8" fill="#7A8CA3" text-anchor="middle" font-style="italic">very large in-memory jobs</text>
-<rect x="887" y="492" width="176" height="40" rx="7" fill="#E3F3E4" stroke="#43A047"/>
-<text x="975.0" y="508" font-size="9.5" fill="#2E7D32" text-anchor="middle" font-weight="600">Worker task pods</text>
-<text x="975.0" y="521" font-size="8" fill="#6B7B8D" text-anchor="middle">very large in-memory workloads</text>
-<rect x="887" y="542" width="176" height="26" rx="6" fill="#F3FAF3" stroke="#7CB56A" stroke-dasharray="4,3"/>
-<text x="975.0" y="558" font-size="8.5" fill="#4C9A55" text-anchor="middle">scale from zero on demand</text>
-<text x="975.0" y="597" font-size="8" fill="#7A8CA3" text-anchor="middle">taint: workload=ultra-high-mem</text>
-<rect x="1090" y="450" width="200" height="165" rx="10" fill="#ffffff" stroke="#43A047" stroke-width="1.5"/>
-<text x="1190.0" y="468" font-size="10.5" fill="#2E7D32" text-anchor="middle" font-weight="600">Compute Optimised Pool</text>
-<text x="1190.0" y="481" font-size="8" fill="#7A8CA3" text-anchor="middle" font-style="italic">CPU-intensive tasks</text>
-<rect x="1102" y="492" width="176" height="40" rx="7" fill="#E3F3E4" stroke="#43A047"/>
-<text x="1190.0" y="508" font-size="9.5" fill="#2E7D32" text-anchor="middle" font-weight="600">Worker task pods</text>
-<text x="1190.0" y="521" font-size="8" fill="#6B7B8D" text-anchor="middle">CPU-bound task workloads</text>
-<rect x="1102" y="542" width="176" height="26" rx="6" fill="#F3FAF3" stroke="#7CB56A" stroke-dasharray="4,3"/>
-<text x="1190.0" y="558" font-size="8.5" fill="#4C9A55" text-anchor="middle">cluster autoscaler enabled</text>
-<text x="1190.0" y="597" font-size="8" fill="#7A8CA3" text-anchor="middle">taint: workload=compute-opt</text>
+<rect x="215" y="450" width="170" height="165" rx="10" fill="#ffffff" stroke="#43A047" stroke-width="1.5"/>
+<text x="300.0" y="468" font-size="10" fill="#2E7D32" text-anchor="middle" font-weight="600">Airflow Pool</text>
+<text x="300.0" y="481" font-size="8" fill="#7A8CA3" text-anchor="middle" font-style="italic">core services</text>
+<rect x="227" y="492" width="146" height="40" rx="7" fill="#E3F3E4" stroke="#43A047"/>
+<text x="300.0" y="508" font-size="9" fill="#2E7D32" text-anchor="middle" font-weight="600">Airflow core services</text>
+<text x="300.0" y="521" font-size="8" fill="#6B7B8D" text-anchor="middle">(see Airflow core layer)</text>
+<rect x="227" y="542" width="146" height="26" rx="6" fill="#F3FAF3" stroke="#7CB56A" stroke-dasharray="4,3"/>
+<text x="300.0" y="558" font-size="8" fill="#4C9A55" text-anchor="middle">2 replicas each · HA spread</text>
+<text x="300.0" y="597" font-size="8" fill="#7A8CA3" text-anchor="middle">nodeSelector: pool=airflow</text>
+<rect x="399" y="450" width="170" height="165" rx="10" fill="#ffffff" stroke="#43A047" stroke-width="1.5"/>
+<text x="484.0" y="468" font-size="10" fill="#2E7D32" text-anchor="middle" font-weight="600">Observability Pool</text>
+<text x="484.0" y="481" font-size="8" fill="#7A8CA3" text-anchor="middle" font-style="italic">monitoring stack</text>
+<rect x="411" y="492" width="146" height="40" rx="7" fill="#E3F3E4" stroke="#43A047"/>
+<text x="484.0" y="508" font-size="9" fill="#2E7D32" text-anchor="middle" font-weight="600">Observability services</text>
+<text x="484.0" y="521" font-size="8" fill="#6B7B8D" text-anchor="middle">(see observability layer)</text>
+<rect x="411" y="542" width="146" height="26" rx="6" fill="#F3FAF3" stroke="#7CB56A" stroke-dasharray="4,3"/>
+<text x="484.0" y="558" font-size="8" fill="#4C9A55" text-anchor="middle">Alloy daemonset on every pool</text>
+<text x="484.0" y="597" font-size="8" fill="#7A8CA3" text-anchor="middle">nodeSelector: pool=observability</text>
+<rect x="583" y="450" width="170" height="165" rx="10" fill="#ffffff" stroke="#43A047" stroke-width="1.5"/>
+<text x="668.0" y="468" font-size="10" fill="#2E7D32" text-anchor="middle" font-weight="600">Jobs Pool</text>
+<text x="668.0" y="481" font-size="8" fill="#7A8CA3" text-anchor="middle" font-style="italic">general task execution</text>
+<rect x="595" y="492" width="146" height="40" rx="7" fill="#E3F3E4" stroke="#43A047"/>
+<text x="668.0" y="508" font-size="9" fill="#2E7D32" text-anchor="middle" font-weight="600">Worker task pods</text>
+<text x="668.0" y="521" font-size="8" fill="#6B7B8D" text-anchor="middle">standard ETL tasks</text>
+<rect x="595" y="542" width="146" height="26" rx="6" fill="#F3FAF3" stroke="#7CB56A" stroke-dasharray="4,3"/>
+<text x="668.0" y="558" font-size="8" fill="#4C9A55" text-anchor="middle">cluster autoscaler enabled</text>
+<text x="668.0" y="597" font-size="8" fill="#7A8CA3" text-anchor="middle">taint: workload=jobs</text>
+<rect x="767" y="450" width="170" height="165" rx="10" fill="#ffffff" stroke="#43A047" stroke-width="1.5"/>
+<text x="852.0" y="468" font-size="10" fill="#2E7D32" text-anchor="middle" font-weight="600">High Memory Pool</text>
+<text x="852.0" y="481" font-size="8" fill="#7A8CA3" text-anchor="middle" font-style="italic">memory-intensive tasks</text>
+<rect x="779" y="492" width="146" height="40" rx="7" fill="#E3F3E4" stroke="#43A047"/>
+<text x="852.0" y="508" font-size="9" fill="#2E7D32" text-anchor="middle" font-weight="600">Worker task pods</text>
+<text x="852.0" y="521" font-size="8" fill="#6B7B8D" text-anchor="middle">large ETL / dataframe workloads</text>
+<rect x="779" y="542" width="146" height="26" rx="6" fill="#F3FAF3" stroke="#7CB56A" stroke-dasharray="4,3"/>
+<text x="852.0" y="558" font-size="8" fill="#4C9A55" text-anchor="middle">autoscales 0 to N, no idle cost</text>
+<text x="852.0" y="597" font-size="8" fill="#7A8CA3" text-anchor="middle">taint: workload=high-mem</text>
+<rect x="951" y="450" width="170" height="165" rx="10" fill="#ffffff" stroke="#43A047" stroke-width="1.5"/>
+<text x="1036.0" y="468" font-size="10" fill="#2E7D32" text-anchor="middle" font-weight="600">Ultra High Memory Pool</text>
+<text x="1036.0" y="481" font-size="8" fill="#7A8CA3" text-anchor="middle" font-style="italic">very large in-memory jobs</text>
+<rect x="963" y="492" width="146" height="40" rx="7" fill="#E3F3E4" stroke="#43A047"/>
+<text x="1036.0" y="508" font-size="9" fill="#2E7D32" text-anchor="middle" font-weight="600">Worker task pods</text>
+<text x="1036.0" y="521" font-size="8" fill="#6B7B8D" text-anchor="middle">very large in-memory workloads</text>
+<rect x="963" y="542" width="146" height="26" rx="6" fill="#F3FAF3" stroke="#7CB56A" stroke-dasharray="4,3"/>
+<text x="1036.0" y="558" font-size="8" fill="#4C9A55" text-anchor="middle">scale from zero on demand</text>
+<text x="1036.0" y="597" font-size="8" fill="#7A8CA3" text-anchor="middle">taint: workload=ultra-high-mem</text>
+<rect x="1135" y="450" width="170" height="165" rx="10" fill="#ffffff" stroke="#43A047" stroke-width="1.5"/>
+<text x="1220.0" y="468" font-size="10" fill="#2E7D32" text-anchor="middle" font-weight="600">Compute Optimised Pool</text>
+<text x="1220.0" y="481" font-size="8" fill="#7A8CA3" text-anchor="middle" font-style="italic">CPU-intensive tasks</text>
+<rect x="1147" y="492" width="146" height="40" rx="7" fill="#E3F3E4" stroke="#43A047"/>
+<text x="1220.0" y="508" font-size="9" fill="#2E7D32" text-anchor="middle" font-weight="600">Worker task pods</text>
+<text x="1220.0" y="521" font-size="8" fill="#6B7B8D" text-anchor="middle">CPU-bound task workloads</text>
+<rect x="1147" y="542" width="146" height="26" rx="6" fill="#F3FAF3" stroke="#7CB56A" stroke-dasharray="4,3"/>
+<text x="1220.0" y="558" font-size="8" fill="#4C9A55" text-anchor="middle">cluster autoscaler enabled</text>
+<text x="1220.0" y="597" font-size="8" fill="#7A8CA3" text-anchor="middle">taint: workload=compute-opt</text>
 <rect x="1005" y="80" width="210" height="55" rx="8" fill="#ffffff" stroke="#1E88E5" stroke-width="1.7"/>
 <text x="1110.0" y="105.5" font-size="10.5" fill="#1E88E5" text-anchor="middle" font-weight="600">NGINX Ingress Controller</text>
 <text x="1110.0" y="118.5" font-size="8" fill="#6B7B8D" text-anchor="middle">TLS 1.2+ · :443 · cert-manager</text>
@@ -141,7 +147,7 @@
 <path d="M652,355 L652,415" fill="none" stroke="#2E7D32" stroke-width="1.7" marker-end="url(#m2E7D32)"/>
 <path d="M350,740 L528,740" fill="none" stroke="#D32F2F" stroke-width="1.7" marker-end="url(#mD32F2F)"/>
 <path d="M738,740 L878,740" fill="none" stroke="#D32F2F" stroke-width="1.7" marker-end="url(#mD32F2F)"/>
-<path d="M995,715 L995,670 L867,670 L867,355" fill="none" stroke="#D32F2F" stroke-width="1.7" stroke-dasharray="6,4" marker-end="url(#mD32F2F)"/>
+<path d="M995,715 L995,670 L944,670 L944,355" fill="none" stroke="#D32F2F" stroke-width="1.7" stroke-dasharray="6,4" marker-end="url(#mD32F2F)"/>
 <path d="M1320,310 L1345,310 L1345,840 L360,840 L360,910" fill="none" stroke="#D84315" stroke-width="1.7" marker-end="url(#mD84315)"/>
 <path d="M1320,295 L1365,295 L1365,850 L892,850 L892,910" fill="none" stroke="#D84315" stroke-width="1.7" marker-end="url(#mD84315)"/>
 <path d="M455,935 L530,935" fill="none" stroke="#D84315" stroke-width="1.7" marker-end="url(#mD84315)"/>
@@ -155,7 +161,7 @@
 <text x="228" y="340" font-size="8.5" fill="#00838F" text-anchor="start">executor: KubernetesExecutor (no celery, no redis/broker)</text>
 <text x="535" y="378" font-size="9" fill="#2E7D32" text-anchor="middle">scheduler launches task pods via k8s API</text>
 <text x="535" y="389" font-size="9" fill="#2E7D32" text-anchor="middle">nodeSelector + tolerations set in pod_override</text>
-<text x="880" y="378" font-size="9" fill="#D32F2F" text-anchor="start">secrets mounted into Airflow pods (volumes / env)</text>
+<text x="958" y="378" font-size="9" fill="#D32F2F" text-anchor="start">secrets mounted into Airflow pods (volumes / env)</text>
 <text x="400" y="731" font-size="8.5" fill="#D32F2F" text-anchor="middle">secrets sync</text>
 <text x="228" y="816" font-size="8.5" fill="#C62828" text-anchor="start">access via Microsoft Entra Workload ID (no static credentials)</text>
 <text x="420" y="834" font-size="8.5" fill="#D84315" text-anchor="start">container logs (all pods)</text>
