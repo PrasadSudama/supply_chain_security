@@ -1,143 +1,124 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1300" viewBox="0 0 1500 1300" font-family="Rubik, 'Segoe UI', Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1230" viewBox="0 0 1500 1230" font-family="Rubik, 'Segoe UI', Helvetica, Arial, sans-serif">
 <defs>
-<marker id="m00AD46" markerWidth="9" markerHeight="9" refX="7.5" refY="4" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 z" fill="#00AD46"/></marker>
-<marker id="m51504F" markerWidth="9" markerHeight="9" refX="7.5" refY="4" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 z" fill="#51504F"/></marker>
 <marker id="m017CEE" markerWidth="9" markerHeight="9" refX="7.5" refY="4" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 z" fill="#017CEE"/></marker>
+<marker id="m00AD46" markerWidth="9" markerHeight="9" refX="7.5" refY="4" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 z" fill="#00AD46"/></marker>
 <marker id="m8250DF" markerWidth="9" markerHeight="9" refX="7.5" refY="4" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 z" fill="#8250DF"/></marker>
 <marker id="mF46800" markerWidth="9" markerHeight="9" refX="7.5" refY="4" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 z" fill="#F46800"/></marker>
 </defs>
-<rect width="1500" height="1300" fill="#ffffff"/>
+<rect width="1500" height="1230" fill="#ffffff"/>
 <text x="120" y="22" font-size="20" font-weight="700"><tspan fill="#017CEE">Apache Airflow</tspan><tspan fill="#51504F"> · Kubernetes Deployment Architecture</tspan></text>
 <text x="120" y="42" font-size="11" fill="#7A8CA3" text-anchor="start">AKS node pools · Azure Key Vault secrets · Prometheus / Grafana / Loki / Alloy observability</text>
 <rect x="120" y="60" width="1200" height="100" rx="8" fill="#F8FBFE" stroke="#C9D8E8"/>
 <text x="132" y="78" font-size="11" fill="#7A8CA3" text-anchor="start" font-weight="600">1 · USER LAYER</text>
-<rect x="120" y="200" width="1200" height="170" rx="8" fill="#F8FBFE" stroke="#C9D8E8"/>
-<text x="132" y="218" font-size="11" fill="#7A8CA3" text-anchor="start" font-weight="600">2 · AIRFLOW CORE LAYER</text>
-<rect x="120" y="410" width="1200" height="230" rx="8" fill="#F8FBFE" stroke="#C9D8E8"/>
-<text x="132" y="428" font-size="11" fill="#7A8CA3" text-anchor="start" font-weight="600">3 · KUBERNETES NODE POOLS LAYER · AKS cluster</text>
-<rect x="350" y="680" width="740" height="150" rx="8" fill="#F8FBFE" stroke="#C9D8E8"/>
-<text x="362" y="698" font-size="11" fill="#7A8CA3" text-anchor="start" font-weight="600">4 · SECRETS &amp; CONFIGURATION LAYER</text>
-<rect x="120" y="870" width="1200" height="150" rx="8" fill="#F8FBFE" stroke="#C9D8E8"/>
-<text x="132" y="888" font-size="11" fill="#7A8CA3" text-anchor="start" font-weight="600">5 · OBSERVABILITY LAYER</text>
-<rect x="120" y="1060" width="1200" height="140" rx="8" fill="#F8FBFE" stroke="#C9D8E8"/>
-<text x="132" y="1078" font-size="11" fill="#7A8CA3" text-anchor="start" font-weight="600">6 · METADATA &amp; STORAGE LAYER</text>
-<rect x="150" y="455" width="220" height="160" rx="10" fill="#ffffff" stroke="#8CA3B8" stroke-width="1.5"/>
-<text x="260.0" y="475" font-size="12.5" fill="#37474F" text-anchor="middle" font-weight="600">Airflow Pool</text>
-<text x="260.0" y="490" font-size="9.5" fill="#7A8CA3" text-anchor="middle" font-style="italic">core components</text>
-<rect x="170" y="499" width="180" height="22" rx="11" fill="#E6F2FE" stroke="#017CEE" stroke-width="1.2"/>
-<text x="260.0" y="514" font-size="10" fill="#2F3B47" text-anchor="middle">Scheduler</text>
-<rect x="170" y="526" width="180" height="22" rx="11" fill="#E5FAFB" stroke="#00C7D4" stroke-width="1.2"/>
-<text x="260.0" y="541" font-size="10" fill="#2F3B47" text-anchor="middle">DAG Processor</text>
-<rect x="170" y="553" width="180" height="22" rx="11" fill="#FFF0EC" stroke="#FF7557" stroke-width="1.2"/>
-<text x="260.0" y="568" font-size="10" fill="#2F3B47" text-anchor="middle">Triggerer</text>
-<rect x="170" y="580" width="180" height="22" rx="11" fill="#E7F7FF" stroke="#0CB6FF" stroke-width="1.2"/>
-<text x="260.0" y="595" font-size="10" fill="#2F3B47" text-anchor="middle">API Server</text>
-<rect x="385" y="455" width="220" height="160" rx="10" fill="#ffffff" stroke="#8CA3B8" stroke-width="1.5"/>
-<text x="495.0" y="475" font-size="12.5" fill="#37474F" text-anchor="middle" font-weight="600">Jobs Pool</text>
-<text x="495.0" y="490" font-size="9.5" fill="#7A8CA3" text-anchor="middle" font-style="italic">general task execution</text>
-<rect x="405" y="499" width="180" height="34" rx="11" fill="#FDEAE7" stroke="#E43921" stroke-width="1.2"/>
-<text x="495.0" y="513" font-size="10" fill="#2F3B47" text-anchor="middle">Worker Pods</text>
-<text x="495.0" y="525" font-size="10" fill="#2F3B47" text-anchor="middle">standard tasks</text>
-<rect x="620" y="455" width="220" height="160" rx="10" fill="#ffffff" stroke="#8CA3B8" stroke-width="1.5"/>
-<text x="730.0" y="475" font-size="12.5" fill="#37474F" text-anchor="middle" font-weight="600">High Memory Pool</text>
-<text x="730.0" y="490" font-size="9.5" fill="#7A8CA3" text-anchor="middle" font-style="italic">memory-optimised nodes</text>
-<rect x="640" y="499" width="180" height="34" rx="11" fill="#FDEAE7" stroke="#E43921" stroke-width="1.2"/>
-<text x="730.0" y="513" font-size="10" fill="#2F3B47" text-anchor="middle">Worker Pods</text>
-<text x="730.0" y="525" font-size="10" fill="#2F3B47" text-anchor="middle">memory-heavy tasks</text>
-<rect x="855" y="455" width="220" height="160" rx="10" fill="#ffffff" stroke="#8CA3B8" stroke-width="1.5"/>
-<text x="965.0" y="475" font-size="12.5" fill="#37474F" text-anchor="middle" font-weight="600">Ultra High Memory Pool</text>
-<text x="965.0" y="490" font-size="9.5" fill="#7A8CA3" text-anchor="middle" font-style="italic">very large memory nodes</text>
-<rect x="875" y="499" width="180" height="34" rx="11" fill="#FDEAE7" stroke="#E43921" stroke-width="1.2"/>
-<text x="965.0" y="513" font-size="10" fill="#2F3B47" text-anchor="middle">Worker Pods</text>
-<text x="965.0" y="525" font-size="10" fill="#2F3B47" text-anchor="middle">ultra-high-memory tasks</text>
-<rect x="1090" y="455" width="220" height="160" rx="10" fill="#ffffff" stroke="#8CA3B8" stroke-width="1.5"/>
-<text x="1200.0" y="475" font-size="12.5" fill="#37474F" text-anchor="middle" font-weight="600">Compute Optimised Pool</text>
-<text x="1200.0" y="490" font-size="9.5" fill="#7A8CA3" text-anchor="middle" font-style="italic">CPU-optimised nodes</text>
-<rect x="1110" y="499" width="180" height="34" rx="11" fill="#FDEAE7" stroke="#E43921" stroke-width="1.2"/>
-<text x="1200.0" y="513" font-size="10" fill="#2F3B47" text-anchor="middle">Worker Pods</text>
-<text x="1200.0" y="525" font-size="10" fill="#2F3B47" text-anchor="middle">CPU-intensive tasks</text>
+<rect x="120" y="200" width="1200" height="370" rx="8" fill="#F8FBFE" stroke="#C9D8E8"/>
+<text x="132" y="218" font-size="11" fill="#7A8CA3" text-anchor="start" font-weight="600">2 · KUBERNETES NODE POOLS LAYER · AKS cluster</text>
+<rect x="350" y="610" width="740" height="150" rx="8" fill="#F8FBFE" stroke="#C9D8E8"/>
+<text x="362" y="628" font-size="11" fill="#7A8CA3" text-anchor="start" font-weight="600">3 · SECRETS &amp; CONFIGURATION LAYER</text>
+<rect x="120" y="800" width="1200" height="150" rx="8" fill="#F8FBFE" stroke="#C9D8E8"/>
+<text x="132" y="818" font-size="11" fill="#7A8CA3" text-anchor="start" font-weight="600">4 · OBSERVABILITY LAYER</text>
+<rect x="120" y="990" width="1200" height="140" rx="8" fill="#F8FBFE" stroke="#C9D8E8"/>
+<text x="132" y="1008" font-size="11" fill="#7A8CA3" text-anchor="start" font-weight="600">5 · METADATA &amp; STORAGE LAYER</text>
+<rect x="150" y="240" width="1140" height="150" rx="10" fill="#ffffff" stroke="#8CA3B8" stroke-width="1.5"/>
+<text x="720.0" y="260" font-size="12.5" fill="#37474F" text-anchor="middle" font-weight="600">Airflow Pool</text>
+<text x="720.0" y="275" font-size="9.5" fill="#7A8CA3" text-anchor="middle" font-style="italic">core components</text>
+<rect x="150" y="420" width="270" height="120" rx="10" fill="#ffffff" stroke="#8CA3B8" stroke-width="1.5"/>
+<text x="285.0" y="440" font-size="12.5" fill="#37474F" text-anchor="middle" font-weight="600">Jobs Pool</text>
+<text x="285.0" y="455" font-size="9.5" fill="#7A8CA3" text-anchor="middle" font-style="italic">general task execution</text>
+<rect x="440" y="420" width="270" height="120" rx="10" fill="#ffffff" stroke="#8CA3B8" stroke-width="1.5"/>
+<text x="575.0" y="440" font-size="12.5" fill="#37474F" text-anchor="middle" font-weight="600">High Memory Pool</text>
+<text x="575.0" y="455" font-size="9.5" fill="#7A8CA3" text-anchor="middle" font-style="italic">memory-optimised nodes</text>
+<rect x="730" y="420" width="270" height="120" rx="10" fill="#ffffff" stroke="#8CA3B8" stroke-width="1.5"/>
+<text x="865.0" y="440" font-size="12.5" fill="#37474F" text-anchor="middle" font-weight="600">Ultra High Memory Pool</text>
+<text x="865.0" y="455" font-size="9.5" fill="#7A8CA3" text-anchor="middle" font-style="italic">very large memory nodes</text>
+<rect x="1020" y="420" width="270" height="120" rx="10" fill="#ffffff" stroke="#8CA3B8" stroke-width="1.5"/>
+<text x="1155.0" y="440" font-size="12.5" fill="#37474F" text-anchor="middle" font-weight="600">Compute Optimised Pool</text>
+<text x="1155.0" y="455" font-size="9.5" fill="#7A8CA3" text-anchor="middle" font-style="italic">CPU-optimised nodes</text>
 <rect x="200" y="85" width="170" height="60" rx="9" fill="#ffffff" stroke="#51504F" stroke-width="2"/>
 <text x="285.0" y="110.0" font-size="12.5" fill="#51504F" text-anchor="middle" font-weight="600">Users</text>
 <text x="285.0" y="125.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Data engineers · CI/CD</text>
-<rect x="575" y="85" width="290" height="60" rx="9" fill="#ffffff" stroke="#017CEE" stroke-width="2"/>
-<text x="720.0" y="110.0" font-size="12.5" fill="#017CEE" text-anchor="middle" font-weight="600">Ingress / Load Balancer</text>
-<text x="720.0" y="125.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">TLS termination · routes UI &amp; API</text>
-<rect x="165" y="260" width="190" height="80" rx="9" fill="#ffffff" stroke="#017CEE" stroke-width="2"/>
-<text x="260.0" y="289.0" font-size="12.5" fill="#017CEE" text-anchor="middle" font-weight="600">Scheduler</text>
-<text x="260.0" y="304.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Schedules DAG runs</text>
-<text x="260.0" y="316.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">&amp; queues tasks</text>
-<rect x="395" y="260" width="190" height="80" rx="9" fill="#ffffff" stroke="#00C7D4" stroke-width="2"/>
-<text x="490.0" y="295.0" font-size="12.5" fill="#00C7D4" text-anchor="middle" font-weight="600">DAG Processor</text>
-<text x="490.0" y="310.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Parses DAG files</text>
-<rect x="625" y="260" width="190" height="80" rx="9" fill="#ffffff" stroke="#0CB6FF" stroke-width="2"/>
-<text x="720.0" y="289.0" font-size="12.5" fill="#0CB6FF" text-anchor="middle" font-weight="600">API Server</text>
-<text x="720.0" y="304.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Airflow UI · REST</text>
-<text x="720.0" y="316.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">&amp; Execution API</text>
-<rect x="855" y="260" width="190" height="80" rx="9" fill="#ffffff" stroke="#FF7557" stroke-width="2"/>
-<text x="950.0" y="289.0" font-size="12.5" fill="#FF7557" text-anchor="middle" font-weight="600">Triggerer</text>
-<text x="950.0" y="304.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Async deferred</text>
-<text x="950.0" y="316.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">operators</text>
-<rect x="1085" y="260" width="190" height="80" rx="9" fill="#ffffff" stroke="#E43921" stroke-width="2"/>
-<text x="1180.0" y="289.0" font-size="12.5" fill="#E43921" text-anchor="middle" font-weight="600">Workers</text>
-<text x="1180.0" y="304.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Execute tasks</text>
-<text x="1180.0" y="316.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">(Kubernetes pods)</text>
-<rect x="380" y="730" width="200" height="70" rx="9" fill="#ffffff" stroke="#0078D4" stroke-width="2"/>
-<text x="480.0" y="760.0" font-size="12.5" fill="#0078D4" text-anchor="middle" font-weight="600">Azure Key Vault</text>
-<text x="480.0" y="775.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">connections · variables · certs</text>
-<rect x="620" y="730" width="200" height="70" rx="9" fill="#ffffff" stroke="#0078D4" stroke-width="2"/>
-<text x="720.0" y="760.0" font-size="12.5" fill="#0078D4" text-anchor="middle" font-weight="600">SecretProviderClass</text>
-<text x="720.0" y="775.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Secrets Store CSI driver</text>
-<rect x="860" y="730" width="200" height="70" rx="9" fill="#ffffff" stroke="#326CE5" stroke-width="2"/>
-<text x="960.0" y="760.0" font-size="12.5" fill="#326CE5" text-anchor="middle" font-weight="600">ConfigMaps &amp; Helm values</text>
-<text x="960.0" y="775.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">airflow.cfg · environment vars</text>
-<rect x="140" y="920" width="220" height="70" rx="9" fill="#ffffff" stroke="#FB8C00" stroke-width="2"/>
-<text x="250.0" y="950.0" font-size="12.5" fill="#FB8C00" text-anchor="middle" font-weight="600">Grafana Alloy</text>
-<text x="250.0" y="965.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Log collector · DaemonSet</text>
-<rect x="430" y="920" width="220" height="70" rx="9" fill="#ffffff" stroke="#F9A825" stroke-width="2"/>
-<text x="540.0" y="950.0" font-size="12.5" fill="#F9A825" text-anchor="middle" font-weight="600">Grafana Loki</text>
-<text x="540.0" y="965.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Log aggregation &amp; storage</text>
-<rect x="720" y="920" width="220" height="70" rx="9" fill="#ffffff" stroke="#F46800" stroke-width="2"/>
-<text x="830.0" y="950.0" font-size="12.5" fill="#F46800" text-anchor="middle" font-weight="600">Grafana</text>
-<text x="830.0" y="965.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Dashboards &amp; alerting</text>
-<rect x="1010" y="920" width="220" height="70" rx="9" fill="#ffffff" stroke="#E6522C" stroke-width="2"/>
-<text x="1120.0" y="950.0" font-size="12.5" fill="#E6522C" text-anchor="middle" font-weight="600">Prometheus</text>
-<text x="1120.0" y="965.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Metrics · StatsD / OTel</text>
-<rect x="180" y="1105" width="320" height="70" rx="9" fill="#ffffff" stroke="#0078D4" stroke-width="2"/>
-<text x="340.0" y="1135.0" font-size="12.5" fill="#0078D4" text-anchor="middle" font-weight="600">Azure Blob Storage</text>
-<text x="340.0" y="1150.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">DAG bundles · remote task logs</text>
-<rect x="900" y="1105" width="350" height="70" rx="9" fill="#ffffff" stroke="#336791" stroke-width="2"/>
-<text x="1075.0" y="1135.0" font-size="12.5" fill="#336791" text-anchor="middle" font-weight="600">PostgreSQL Metadata DB</text>
-<text x="1075.0" y="1150.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">DAG runs · task instances · connections · XComs</text>
-<path d="M370,115 L575,115" fill="none" stroke="#017CEE" stroke-width="2" marker-end="url(#m017CEE)"/>
-<path d="M720,145 L720,260" fill="none" stroke="#017CEE" stroke-width="2" marker-end="url(#m017CEE)"/>
-<path d="M720,370 L720,410" fill="none" stroke="#51504F" stroke-width="2" marker-end="url(#m51504F)"/>
-<path d="M580,765 L620,765" fill="none" stroke="#8250DF" stroke-width="2" marker-end="url(#m8250DF)"/>
-<path d="M720,730 L720,640" fill="none" stroke="#8250DF" stroke-width="2" marker-end="url(#m8250DF)"/>
-<path d="M960,730 L960,640" fill="none" stroke="#8250DF" stroke-width="2" marker-end="url(#m8250DF)"/>
-<path d="M310,640 L310,920" fill="none" stroke="#F46800" stroke-width="2" marker-end="url(#mF46800)"/>
-<path d="M1120,640 L1120,920" fill="none" stroke="#F46800" stroke-width="2" marker-end="url(#mF46800)"/>
-<path d="M360,955 L430,955" fill="none" stroke="#F46800" stroke-width="2" marker-end="url(#mF46800)"/>
-<path d="M720,955 L650,955" fill="none" stroke="#F46800" stroke-width="2" marker-end="url(#mF46800)"/>
-<path d="M940,955 L1010,955" fill="none" stroke="#F46800" stroke-width="2" marker-end="url(#mF46800)"/>
-<path d="M1320,300 L1380,300 L1380,1140 L1250,1140" fill="none" stroke="#00AD46" stroke-width="2" marker-end="url(#m00AD46)"/>
-<text x="735" y="389" font-size="10" fill="#51504F" text-anchor="start">Pods scheduled onto node pools</text>
-<text x="732" y="658" font-size="10" fill="#8250DF" text-anchor="start">Secrets &amp; config mounted</text>
-<text x="732" y="670" font-size="10" fill="#8250DF" text-anchor="start">into Airflow pods</text>
-<text x="600.0" y="755" font-size="10" fill="#8250DF" text-anchor="middle">sync</text>
-<text x="322" y="852" font-size="10" fill="#F46800" text-anchor="start">pod logs &amp; stdout</text>
-<text x="1112" y="852" font-size="10" fill="#F46800" text-anchor="end">StatsD / OTel metrics</text>
-<text x="395.0" y="946" font-size="10" fill="#F46800" text-anchor="middle">logs</text>
-<text x="685.0" y="946" font-size="10" fill="#F46800" text-anchor="middle">query</text>
-<text x="975.0" y="946" font-size="10" fill="#F46800" text-anchor="middle">query</text>
-<text transform="translate(1406,847.4) rotate(-90)" font-size="10" fill="#00AD46" text-anchor="start">Metadata DB connections (all Airflow components)</text>
-<rect x="140" y="1252" width="36" height="5" rx="2.5" fill="#017CEE"/>
-<text x="184" y="1259" font-size="11" fill="#51504F" text-anchor="start">User / HTTP traffic</text>
-<rect x="350" y="1252" width="36" height="5" rx="2.5" fill="#51504F"/>
-<text x="394" y="1259" font-size="11" fill="#51504F" text-anchor="start">Pod scheduling</text>
-<rect x="545" y="1252" width="36" height="5" rx="2.5" fill="#8250DF"/>
-<text x="589" y="1259" font-size="11" fill="#51504F" text-anchor="start">Secrets &amp; configuration</text>
-<rect x="775" y="1252" width="36" height="5" rx="2.5" fill="#F46800"/>
-<text x="819" y="1259" font-size="11" fill="#51504F" text-anchor="start">Metrics &amp; logs</text>
-<rect x="975" y="1252" width="36" height="5" rx="2.5" fill="#00AD46"/>
-<text x="1019" y="1259" font-size="11" fill="#51504F" text-anchor="start">Database connections</text>
+<rect x="690" y="85" width="290" height="60" rx="9" fill="#ffffff" stroke="#017CEE" stroke-width="2"/>
+<text x="835.0" y="110.0" font-size="12.5" fill="#017CEE" text-anchor="middle" font-weight="600">Ingress / Load Balancer</text>
+<text x="835.0" y="125.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">TLS termination · routes UI &amp; API</text>
+<rect x="280" y="290" width="190" height="80" rx="9" fill="#ffffff" stroke="#017CEE" stroke-width="2"/>
+<text x="375.0" y="319.0" font-size="12.5" fill="#017CEE" text-anchor="middle" font-weight="600">Scheduler</text>
+<text x="375.0" y="334.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Schedules DAG runs</text>
+<text x="375.0" y="346.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">&amp; queues tasks</text>
+<rect x="510" y="290" width="190" height="80" rx="9" fill="#ffffff" stroke="#00C7D4" stroke-width="2"/>
+<text x="605.0" y="325.0" font-size="12.5" fill="#00C7D4" text-anchor="middle" font-weight="600">DAG Processor</text>
+<text x="605.0" y="340.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Parses DAG files</text>
+<rect x="740" y="290" width="190" height="80" rx="9" fill="#ffffff" stroke="#0CB6FF" stroke-width="2"/>
+<text x="835.0" y="319.0" font-size="12.5" fill="#0CB6FF" text-anchor="middle" font-weight="600">API Server</text>
+<text x="835.0" y="334.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Airflow UI · REST</text>
+<text x="835.0" y="346.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">&amp; Execution API</text>
+<rect x="970" y="290" width="190" height="80" rx="9" fill="#ffffff" stroke="#FF7557" stroke-width="2"/>
+<text x="1065.0" y="319.0" font-size="12.5" fill="#FF7557" text-anchor="middle" font-weight="600">Triggerer</text>
+<text x="1065.0" y="334.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Async deferred</text>
+<text x="1065.0" y="346.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">operators</text>
+<rect x="170" y="465" width="230" height="60" rx="9" fill="#ffffff" stroke="#E43921" stroke-width="2"/>
+<text x="285.0" y="490.0" font-size="12.5" fill="#E43921" text-anchor="middle" font-weight="600">Worker Pods</text>
+<text x="285.0" y="505.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">standard tasks</text>
+<rect x="460" y="465" width="230" height="60" rx="9" fill="#ffffff" stroke="#E43921" stroke-width="2"/>
+<text x="575.0" y="490.0" font-size="12.5" fill="#E43921" text-anchor="middle" font-weight="600">Worker Pods</text>
+<text x="575.0" y="505.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">memory-heavy tasks</text>
+<rect x="750" y="465" width="230" height="60" rx="9" fill="#ffffff" stroke="#E43921" stroke-width="2"/>
+<text x="865.0" y="490.0" font-size="12.5" fill="#E43921" text-anchor="middle" font-weight="600">Worker Pods</text>
+<text x="865.0" y="505.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">ultra-high-memory tasks</text>
+<rect x="1040" y="465" width="230" height="60" rx="9" fill="#ffffff" stroke="#E43921" stroke-width="2"/>
+<text x="1155.0" y="490.0" font-size="12.5" fill="#E43921" text-anchor="middle" font-weight="600">Worker Pods</text>
+<text x="1155.0" y="505.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">CPU-intensive tasks</text>
+<rect x="380" y="660" width="200" height="70" rx="9" fill="#ffffff" stroke="#0078D4" stroke-width="2"/>
+<text x="480.0" y="690.0" font-size="12.5" fill="#0078D4" text-anchor="middle" font-weight="600">Azure Key Vault</text>
+<text x="480.0" y="705.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">connections · variables · certs</text>
+<rect x="620" y="660" width="200" height="70" rx="9" fill="#ffffff" stroke="#0078D4" stroke-width="2"/>
+<text x="720.0" y="690.0" font-size="12.5" fill="#0078D4" text-anchor="middle" font-weight="600">SecretProviderClass</text>
+<text x="720.0" y="705.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Secrets Store CSI driver</text>
+<rect x="860" y="660" width="200" height="70" rx="9" fill="#ffffff" stroke="#326CE5" stroke-width="2"/>
+<text x="960.0" y="690.0" font-size="12.5" fill="#326CE5" text-anchor="middle" font-weight="600">ConfigMaps &amp; Helm values</text>
+<text x="960.0" y="705.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">airflow.cfg · environment vars</text>
+<rect x="140" y="850" width="220" height="70" rx="9" fill="#ffffff" stroke="#FB8C00" stroke-width="2"/>
+<text x="250.0" y="880.0" font-size="12.5" fill="#FB8C00" text-anchor="middle" font-weight="600">Grafana Alloy</text>
+<text x="250.0" y="895.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Log collector · DaemonSet</text>
+<rect x="430" y="850" width="220" height="70" rx="9" fill="#ffffff" stroke="#F9A825" stroke-width="2"/>
+<text x="540.0" y="880.0" font-size="12.5" fill="#F9A825" text-anchor="middle" font-weight="600">Grafana Loki</text>
+<text x="540.0" y="895.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Log aggregation &amp; storage</text>
+<rect x="720" y="850" width="220" height="70" rx="9" fill="#ffffff" stroke="#F46800" stroke-width="2"/>
+<text x="830.0" y="880.0" font-size="12.5" fill="#F46800" text-anchor="middle" font-weight="600">Grafana</text>
+<text x="830.0" y="895.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Dashboards &amp; alerting</text>
+<rect x="1010" y="850" width="220" height="70" rx="9" fill="#ffffff" stroke="#E6522C" stroke-width="2"/>
+<text x="1120.0" y="880.0" font-size="12.5" fill="#E6522C" text-anchor="middle" font-weight="600">Prometheus</text>
+<text x="1120.0" y="895.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">Metrics · StatsD / OTel</text>
+<rect x="180" y="1035" width="320" height="70" rx="9" fill="#ffffff" stroke="#0078D4" stroke-width="2"/>
+<text x="340.0" y="1065.0" font-size="12.5" fill="#0078D4" text-anchor="middle" font-weight="600">Azure Blob Storage</text>
+<text x="340.0" y="1080.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">DAG bundles · remote task logs</text>
+<rect x="900" y="1035" width="350" height="70" rx="9" fill="#ffffff" stroke="#336791" stroke-width="2"/>
+<text x="1075.0" y="1065.0" font-size="12.5" fill="#336791" text-anchor="middle" font-weight="600">PostgreSQL Metadata DB</text>
+<text x="1075.0" y="1080.0" font-size="9.5" fill="#6B7B8D" text-anchor="middle">DAG runs · task instances · connections · XComs</text>
+<path d="M370,115 L690,115" fill="none" stroke="#017CEE" stroke-width="2" marker-end="url(#m017CEE)"/>
+<path d="M835,145 L835,290" fill="none" stroke="#017CEE" stroke-width="2" marker-end="url(#m017CEE)"/>
+<path d="M580,695 L620,695" fill="none" stroke="#8250DF" stroke-width="2" marker-end="url(#m8250DF)"/>
+<path d="M720,660 L720,570" fill="none" stroke="#8250DF" stroke-width="2" marker-end="url(#m8250DF)"/>
+<path d="M960,660 L960,570" fill="none" stroke="#8250DF" stroke-width="2" marker-end="url(#m8250DF)"/>
+<path d="M310,570 L310,850" fill="none" stroke="#F46800" stroke-width="2" marker-end="url(#mF46800)"/>
+<path d="M1120,570 L1120,850" fill="none" stroke="#F46800" stroke-width="2" marker-end="url(#mF46800)"/>
+<path d="M360,885 L430,885" fill="none" stroke="#F46800" stroke-width="2" marker-end="url(#mF46800)"/>
+<path d="M720,885 L650,885" fill="none" stroke="#F46800" stroke-width="2" marker-end="url(#mF46800)"/>
+<path d="M940,885 L1010,885" fill="none" stroke="#F46800" stroke-width="2" marker-end="url(#mF46800)"/>
+<path d="M1320,300 L1380,300 L1380,1070 L1250,1070" fill="none" stroke="#00AD46" stroke-width="2" marker-end="url(#m00AD46)"/>
+<text x="732" y="588" font-size="10" fill="#8250DF" text-anchor="start">Secrets &amp; config mounted</text>
+<text x="732" y="600" font-size="10" fill="#8250DF" text-anchor="start">into Airflow pods</text>
+<text x="600.0" y="685" font-size="10" fill="#8250DF" text-anchor="middle">sync</text>
+<text x="322" y="782" font-size="10" fill="#F46800" text-anchor="start">pod logs &amp; stdout</text>
+<text x="1112" y="782" font-size="10" fill="#F46800" text-anchor="end">StatsD / OTel metrics</text>
+<text x="395.0" y="876" font-size="10" fill="#F46800" text-anchor="middle">logs</text>
+<text x="685.0" y="876" font-size="10" fill="#F46800" text-anchor="middle">query</text>
+<text x="975.0" y="876" font-size="10" fill="#F46800" text-anchor="middle">query</text>
+<text transform="translate(1406,807.4) rotate(-90)" font-size="10" fill="#00AD46" text-anchor="start">Metadata DB connections (all Airflow components)</text>
+<rect x="140" y="1182" width="36" height="5" rx="2.5" fill="#017CEE"/>
+<text x="184" y="1189" font-size="11" fill="#51504F" text-anchor="start">User / HTTP traffic</text>
+<rect x="380" y="1182" width="36" height="5" rx="2.5" fill="#8250DF"/>
+<text x="424" y="1189" font-size="11" fill="#51504F" text-anchor="start">Secrets &amp; configuration</text>
+<rect x="640" y="1182" width="36" height="5" rx="2.5" fill="#F46800"/>
+<text x="684" y="1189" font-size="11" fill="#51504F" text-anchor="start">Metrics &amp; logs</text>
+<rect x="900" y="1182" width="36" height="5" rx="2.5" fill="#00AD46"/>
+<text x="944" y="1189" font-size="11" fill="#51504F" text-anchor="start">Database connections</text>
 </svg>

@@ -15,7 +15,7 @@ from xml.sax.saxutils import escape, quoteattr
 # ---------------------------------------------------------------- palette --
 BLUE    = "#017CEE"   # Airflow blue  - Scheduler
 TEAL    = "#00C7D4"   # Airflow teal  - DAG Processor
-GREEN   = "#00AD46"   # Airflow green - Webserver
+GREEN   = "#00AD46"   # Airflow green - database flows
 SKY     = "#0CB6FF"   # Airflow sky   - API Server
 CORAL   = "#FF7557"   # Airflow coral - Triggerer
 RED     = "#E43921"   # Airflow red   - Workers
@@ -34,15 +34,8 @@ PROM    = "#E6522C"
 LOKI    = "#F9A825"
 ALLOY   = "#FB8C00"
 
-TINT = {
-    BLUE: "#E6F2FE", TEAL: "#E5FAFB", GREEN: "#E6F7ED", SKY: "#E7F7FF",
-    CORAL: "#FFF0EC", RED: "#FDEAE7", AZURE: "#E5F1FB", K8S: "#EAEFFC",
-    PGBLUE: "#EAF0F6", PROM: "#FDEBE6", LOKI: "#FEF4E0", ALLOY: "#FFF1E0",
-    ORANGE: "#FEEFE0",
-}
-
 FONT = "Rubik, 'Segoe UI', Helvetica, Arial, sans-serif"
-W, H = 1500, 1300
+W, H = 1500, 1230
 
 # ---------------------------------------------------------------- content --
 TITLE = "Apache Airflow · Kubernetes Deployment Architecture"
@@ -51,93 +44,87 @@ SUBTITLE = ("AKS node pools · Azure Key Vault secrets · "
 
 LAYERS = [
     ("L1", "1 · USER LAYER",                                   120,   60, 1200, 100),
-    ("L2", "2 · AIRFLOW CORE LAYER",                           120,  200, 1200, 170),
-    ("L3", "3 · KUBERNETES NODE POOLS LAYER · AKS cluster", 120, 410, 1200, 230),
-    ("L4", "4 · SECRETS & CONFIGURATION LAYER",                350,  680,  740, 150),
-    ("L5", "5 · OBSERVABILITY LAYER",                          120,  870, 1200, 150),
-    ("L6", "6 · METADATA & STORAGE LAYER",                     120, 1060, 1200, 140),
+    ("L2", "2 · KUBERNETES NODE POOLS LAYER · AKS cluster", 120, 200, 1200, 370),
+    ("L3", "3 · SECRETS & CONFIGURATION LAYER",                350,  610,  740, 150),
+    ("L4", "4 · OBSERVABILITY LAYER",                          120,  800, 1200, 150),
+    ("L5", "5 · METADATA & STORAGE LAYER",                     120,  990, 1200, 140),
+]
+
+# id, title, subtitle, x, y, w, h
+POOLS = [
+    ("poolAf",    "Airflow Pool",           "core components",          150, 240, 1140, 150),
+    ("poolJobs",  "Jobs Pool",              "general task execution",   150, 420,  270, 120),
+    ("poolHi",    "High Memory Pool",       "memory-optimised nodes",   440, 420,  270, 120),
+    ("poolUltra", "Ultra High Memory Pool", "very large memory nodes",  730, 420,  270, 120),
+    ("poolCpu",   "Compute Optimised Pool", "CPU-optimised nodes",     1020, 420,  270, 120),
 ]
 
 # id, title, sub-lines, colour, x, y, w, h
 BOXES = [
     ("user",    "Users",                    ["Data engineers · CI/CD"],                 GRAY,   200,   85, 170, 60),
-    ("ingress", "Ingress / Load Balancer",  ["TLS termination · routes UI & API"],      BLUE,   575,   85, 290, 60),
+    ("ingress", "Ingress / Load Balancer",  ["TLS termination · routes UI & API"],      BLUE,   690,   85, 290, 60),
 
-    ("sched",   "Scheduler",                ["Schedules DAG runs", "& queues tasks"],        BLUE,   165,  260, 190, 80),
-    ("dagproc", "DAG Processor",            ["Parses DAG files"],                            TEAL,   395,  260, 190, 80),
-    ("api",     "API Server",               ["Airflow UI · REST", "& Execution API"],        SKY,    625,  260, 190, 80),
-    ("trig",    "Triggerer",                ["Async deferred", "operators"],                 CORAL,  855,  260, 190, 80),
-    ("work",    "Workers",                  ["Execute tasks", "(Kubernetes pods)"],          RED,   1085,  260, 190, 80),
+    # Airflow core components, running inside the Airflow Pool
+    ("sched",   "Scheduler",                ["Schedules DAG runs", "& queues tasks"],   BLUE,   280,  290, 190, 80),
+    ("dagproc", "DAG Processor",            ["Parses DAG files"],                       TEAL,   510,  290, 190, 80),
+    ("api",     "API Server",               ["Airflow UI · REST", "& Execution API"],   SKY,    740,  290, 190, 80),
+    ("trig",    "Triggerer",                ["Async deferred", "operators"],            CORAL,  970,  290, 190, 80),
 
-    ("akv",     "Azure Key Vault",          ["connections · variables · certs"],   AZURE,  380,  730, 200, 70),
-    ("spc",     "SecretProviderClass",      ["Secrets Store CSI driver"],                    AZURE,  620,  730, 200, 70),
-    ("cfg",     "ConfigMaps & Helm values", ["airflow.cfg · environment vars"],         K8S,    860,  730, 200, 70),
+    # Worker pods, one flavour per worker pool
+    ("wpJobs",  "Worker Pods",              ["standard tasks"],                         RED,    170,  465, 230, 60),
+    ("wpHi",    "Worker Pods",              ["memory-heavy tasks"],                     RED,    460,  465, 230, 60),
+    ("wpUltra", "Worker Pods",              ["ultra-high-memory tasks"],                RED,    750,  465, 230, 60),
+    ("wpCpu",   "Worker Pods",              ["CPU-intensive tasks"],                    RED,   1040,  465, 230, 60),
 
-    ("alloy",   "Grafana Alloy",            ["Log collector · DaemonSet"],              ALLOY,  140,  920, 220, 70),
-    ("loki",    "Grafana Loki",             ["Log aggregation & storage"],                   LOKI,   430,  920, 220, 70),
-    ("graf",    "Grafana",                  ["Dashboards & alerting"],                       ORANGE, 720,  920, 220, 70),
-    ("prom",    "Prometheus",               ["Metrics · StatsD / OTel"],                PROM,  1010,  920, 220, 70),
+    ("akv",     "Azure Key Vault",          ["connections · variables · certs"],        AZURE,  380,  660, 200, 70),
+    ("spc",     "SecretProviderClass",      ["Secrets Store CSI driver"],               AZURE,  620,  660, 200, 70),
+    ("cfg",     "ConfigMaps & Helm values", ["airflow.cfg · environment vars"],         K8S,    860,  660, 200, 70),
 
-    ("blob",    "Azure Blob Storage",       ["DAG bundles · remote task logs"],         AZURE,  180, 1105, 320, 70),
+    ("alloy",   "Grafana Alloy",            ["Log collector · DaemonSet"],              ALLOY,  140,  850, 220, 70),
+    ("loki",    "Grafana Loki",             ["Log aggregation & storage"],              LOKI,   430,  850, 220, 70),
+    ("graf",    "Grafana",                  ["Dashboards & alerting"],                  ORANGE, 720,  850, 220, 70),
+    ("prom",    "Prometheus",               ["Metrics · StatsD / OTel"],                PROM,  1010,  850, 220, 70),
+
+    ("blob",    "Azure Blob Storage",       ["DAG bundles · remote task logs"],         AZURE,  180, 1035, 320, 70),
     ("pg",      "PostgreSQL Metadata DB",   ["DAG runs · task instances · connections · XComs"],
-                                                                                             PGBLUE, 900, 1105, 350, 70),
-]
-
-# id, title, subtitle, x, chips  (all pools: y=455, w=220, h=160)
-# each chip is (lines, colour) — 1-line chips are 22px, 2-line chips 34px
-POOL_Y, POOL_W, POOL_H = 455, 220, 160
-POOLS = [
-    ("poolAf",    "Airflow Pool",              "core components",         150,
-     [(["Scheduler"], BLUE), (["DAG Processor"], TEAL),
-      (["Triggerer"], CORAL), (["API Server"], SKY)]),
-    ("poolJobs",  "Jobs Pool",                 "general task execution",  385,
-     [(["Worker Pods", "standard tasks"], RED)]),
-    ("poolHi",    "High Memory Pool",          "memory-optimised nodes",  620,
-     [(["Worker Pods", "memory-heavy tasks"], RED)]),
-    ("poolUltra", "Ultra High Memory Pool",    "very large memory nodes", 855,
-     [(["Worker Pods", "ultra-high-memory tasks"], RED)]),
-    ("poolCpu",   "Compute Optimised Pool",    "CPU-optimised nodes",    1090,
-     [(["Worker Pods", "CPU-intensive tasks"], RED)]),
+                                                                                        PGBLUE, 900, 1035, 350, 70),
 ]
 
 # id, colour, points [(x,y)...] first=start last=end (arrow at end)
 EDGES = [
-    ("e1",  BLUE,   [(370, 115), (575, 115)]),
-    ("e2",  BLUE,   [(720, 145), (720, 260)]),
-    ("e4",  GRAY,   [(720, 370), (720, 410)]),
-    ("e5",  PURPLE, [(580, 765), (620, 765)]),
-    ("e6",  PURPLE, [(720, 730), (720, 640)]),
-    ("e7",  PURPLE, [(960, 730), (960, 640)]),
-    ("e8",  ORANGE, [(310, 640), (310, 920)]),
-    ("e9",  ORANGE, [(1120, 640), (1120, 920)]),
-    ("e10", ORANGE, [(360, 955), (430, 955)]),
-    ("e11", ORANGE, [(720, 955), (650, 955)]),
-    ("e12", ORANGE, [(940, 955), (1010, 955)]),
-    ("e13", GREEN,  [(1320, 300), (1380, 300), (1380, 1140), (1250, 1140)]),
+    ("e1",  BLUE,   [(370, 115), (690, 115)]),
+    ("e2",  BLUE,   [(835, 145), (835, 290)]),
+    ("e5",  PURPLE, [(580, 695), (620, 695)]),
+    ("e6",  PURPLE, [(720, 660), (720, 570)]),
+    ("e7",  PURPLE, [(960, 660), (960, 570)]),
+    ("e8",  ORANGE, [(310, 570), (310, 850)]),
+    ("e9",  ORANGE, [(1120, 570), (1120, 850)]),
+    ("e10", ORANGE, [(360, 885), (430, 885)]),
+    ("e11", ORANGE, [(720, 885), (650, 885)]),
+    ("e12", ORANGE, [(940, 885), (1010, 885)]),
+    ("e13", GREEN,  [(1320, 300), (1380, 300), (1380, 1070), (1250, 1070)]),
 ]
 
 # free-floating annotation labels: text, x, y(top), width, colour, align
 NOTES = [
-    ("Pods scheduled onto node pools",              735,  381, 250, GRAY,   "left"),
-    ("Secrets & config mounted\ninto Airflow pods", 732,  650, 215, PURPLE, "left"),
-    ("sync",                                        578,  747,  44, PURPLE, "center"),
-    ("pod logs & stdout",                           322,  844, 190, ORANGE, "left"),
-    ("StatsD / OTel metrics",                       950,  844, 162, ORANGE, "right"),
-    ("logs",                                        373,  938,  44, ORANGE, "center"),
-    ("query",                                       658,  938,  54, ORANGE, "center"),
-    ("query",                                       948,  938,  54, ORANGE, "center"),
+    ("Secrets & config mounted\ninto Airflow pods", 732,  580, 215, PURPLE, "left"),
+    ("sync",                                        578,  677,  44, PURPLE, "center"),
+    ("pod logs & stdout",                           322,  774, 190, ORANGE, "left"),
+    ("StatsD / OTel metrics",                       950,  774, 162, ORANGE, "right"),
+    ("logs",                                        373,  868,  44, ORANGE, "center"),
+    ("query",                                       658,  868,  54, ORANGE, "center"),
+    ("query",                                       948,  868,  54, ORANGE, "center"),
 ]
 
 DB_LABEL = "Metadata DB connections (all Airflow components)"  # vertical, beside right rail
 
 LEGEND = [  # x, colour, label
     (140,  BLUE,   "User / HTTP traffic"),
-    (350,  GRAY,   "Pod scheduling"),
-    (545,  PURPLE, "Secrets & configuration"),
-    (775,  ORANGE, "Metrics & logs"),
-    (975,  GREEN,  "Database connections"),
+    (380,  PURPLE, "Secrets & configuration"),
+    (640,  ORANGE, "Metrics & logs"),
+    (900,  GREEN,  "Database connections"),
 ]
-LEGEND_Y = 1248
+LEGEND_Y = 1178
 
 # ------------------------------------------------------------- draw.io ----
 
@@ -166,21 +153,13 @@ def drawio() -> str:
             f"strokeColor={LSTROKE};verticalAlign=top;align=left;spacingLeft=12;"
             f"spacingTop=4;fontSize=11;fontStyle=1;fontColor={LFONT};", x, y, w, h)
 
-    for pid, ptitle, psub, px, chips in POOLS:
+    for pid, ptitle, psub, px, py, pw, ph in POOLS:
         vtx(pid,
             f'<b>{escape(ptitle)}</b><br/><font style="font-size:9px;" color="{LFONT}">'
             f'<i>{escape(psub)}</i></font>',
             f"rounded=1;arcSize=8;html=1;whiteSpace=wrap;fillColor=#FFFFFF;"
             f"strokeColor={POOLSTR};strokeWidth=1.5;verticalAlign=top;spacingTop=4;"
-            f"fontSize=12;fontColor=#37474F;", px, POOL_Y, POOL_W, POOL_H)
-        cy = POOL_Y + 44
-        for i, (clines, ccol) in enumerate(chips):
-            ch = 22 if len(clines) == 1 else 34
-            vtx(f"{pid}_c{i}", "<br/>".join(escape(s) for s in clines),
-                f"rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor={TINT[ccol]};"
-                f"strokeColor={ccol};strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;",
-                px + 20, cy, POOL_W - 40, ch)
-            cy += ch + 5
+            f"fontSize=12;fontColor=#37474F;", px, py, pw, ph)
 
     for bid, btitle, subs, col, x, y, w, h in BOXES:
         sub = "<br/>".join(escape(s) for s in subs)
@@ -217,7 +196,7 @@ def drawio() -> str:
 
     vtx("dbLabel", DB_LABEL,
         f"text;html=1;fontSize=10;horizontal=0;align=center;verticalAlign=middle;"
-        f"fontColor={GREEN};", 1388, 560, 26, 330)
+        f"fontColor={GREEN};", 1388, 520, 26, 330)
 
     for i, (lx, col, label) in enumerate(LEGEND):
         vtx(f"legSw{i}", "",
@@ -279,23 +258,11 @@ def svg() -> str:
                    f'fill="{LFILL}" stroke="{LSTROKE}"/>')
         text(x + 12, y + 18, label, 11, LFONT, bold=True)
 
-    for _, ptitle, psub, px, chips in POOLS:
-        out.append(f'<rect x="{px}" y="{POOL_Y}" width="{POOL_W}" height="{POOL_H}" rx="10" '
+    for _, ptitle, psub, px, py, pw, ph in POOLS:
+        out.append(f'<rect x="{px}" y="{py}" width="{pw}" height="{ph}" rx="10" '
                    f'fill="#ffffff" stroke="{POOLSTR}" stroke-width="1.5"/>')
-        text(px + POOL_W / 2, POOL_Y + 20, ptitle, 12.5, "#37474F", anchor="middle", bold=True)
-        text(px + POOL_W / 2, POOL_Y + 35, psub, 9.5, LFONT, anchor="middle", italic=True)
-        cy = POOL_Y + 44
-        for clines, ccol in chips:
-            ch = 22 if len(clines) == 1 else 34
-            out.append(f'<rect x="{px + 20}" y="{cy}" width="{POOL_W - 40}" height="{ch}" '
-                       f'rx="11" fill="{TINT[ccol]}" stroke="{ccol}" stroke-width="1.2"/>')
-            if len(clines) == 1:
-                text(px + POOL_W / 2, cy + 15, clines[0], 10, "#2F3B47", anchor="middle")
-            else:
-                for j, line in enumerate(clines):
-                    text(px + POOL_W / 2, cy + 14 + j * 12, line, 10, "#2F3B47",
-                         anchor="middle")
-            cy += ch + 5
+        text(px + pw / 2, py + 20, ptitle, 12.5, "#37474F", anchor="middle", bold=True)
+        text(px + pw / 2, py + 35, psub, 9.5, LFONT, anchor="middle", italic=True)
 
     for _, btitle, subs, col, x, y, w, h in BOXES:
         out.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="9" '
@@ -319,7 +286,7 @@ def svg() -> str:
         for i, line in enumerate(t.split("\n")):
             text(ax, y + 8 + i * 12, line, 10, col, anchor=anchor)
 
-    text(1406, 725 + len(DB_LABEL) * 2.55, DB_LABEL, 10, GREEN, anchor="start", rotate=True)
+    text(1406, 685 + len(DB_LABEL) * 2.55, DB_LABEL, 10, GREEN, anchor="start", rotate=True)
 
     for lx, col, label in LEGEND:
         out.append(f'<rect x="{lx}" y="{LEGEND_Y + 4}" width="36" height="5" rx="2.5" fill="{col}"/>')

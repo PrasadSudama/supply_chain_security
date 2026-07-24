@@ -23,22 +23,21 @@ to get a native Visio file.
 
 1. **User Layer** — users reach the Airflow UI and REST API through an
    Ingress / Load Balancer (TLS termination).
-2. **Airflow Core Layer** — Scheduler, DAG Processor, API Server (serves the
-   Airflow UI as well as the REST & Execution APIs in Airflow 3), Triggerer,
-   Workers.
-3. **Kubernetes Node Pools Layer** — pods are placed by resource profile:
+2. **Kubernetes Node Pools Layer** — every Airflow component runs on an AKS
+   node pool matching its resource profile:
    - **Airflow Pool** — the core components: Scheduler, DAG Processor,
-     Triggerer, API Server
+     API Server (serves the Airflow UI as well as the REST & Execution APIs
+     in Airflow 3), Triggerer
    - **Jobs Pool** — worker pods for standard tasks
    - **High Memory Pool** — worker pods for memory-heavy tasks
    - **Ultra High Memory Pool** — worker pods for very large in-memory workloads
    - **Compute Optimised Pool** — worker pods for CPU-intensive tasks
-4. **Secrets & Configuration Layer** — Azure Key Vault synced through a
+3. **Secrets & Configuration Layer** — Azure Key Vault synced through a
    `SecretProviderClass` (Secrets Store CSI driver); secrets and ConfigMaps /
    Helm values are mounted into the Airflow pods as volumes and env vars.
-5. **Observability Layer** — Grafana Alloy (DaemonSet) ships pod logs to Loki;
+4. **Observability Layer** — Grafana Alloy (DaemonSet) ships pod logs to Loki;
    Prometheus scrapes StatsD / OTel metrics; Grafana queries both.
-6. **Metadata & Storage Layer** — PostgreSQL metadata database (all Airflow
+5. **Metadata & Storage Layer** — PostgreSQL metadata database (all Airflow
    components connect to it) and Azure Blob Storage for DAG bundles and remote
    task logs.
 
