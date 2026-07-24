@@ -28,41 +28,44 @@
         <mxCell id="L6" value="6 · METADATA &amp; STORAGE LAYER" style="rounded=1;arcSize=4;html=1;whiteSpace=wrap;fillColor=#F8FBFE;strokeColor=#C9D8E8;verticalAlign=top;align=left;spacingLeft=12;spacingTop=4;fontSize=11;fontStyle=1;fontColor=#7A8CA3;" vertex="1" parent="1">
           <mxGeometry x="120" y="1060" width="1200" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="poolJobs" value='&lt;b&gt;Jobs Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#7A8CA3"&gt;&lt;i&gt;general task execution&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=8;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#8CA3B8;strokeWidth=1.5;verticalAlign=top;spacingTop=4;fontSize=12;fontColor=#37474F;" vertex="1" parent="1">
-          <mxGeometry x="150" y="455" width="270" height="160" as="geometry" />
+        <mxCell id="poolAf" value='&lt;b&gt;Airflow Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#7A8CA3"&gt;&lt;i&gt;core components&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=8;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#8CA3B8;strokeWidth=1.5;verticalAlign=top;spacingTop=4;fontSize=12;fontColor=#37474F;" vertex="1" parent="1">
+          <mxGeometry x="150" y="455" width="220" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="poolJobs_c0" value="Worker Pods — standard tasks" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#FDEAE7;strokeColor=#E43921;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
-          <mxGeometry x="170" y="499" width="230" height="22" as="geometry" />
+        <mxCell id="poolAf_c0" value="Scheduler" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#E6F2FE;strokeColor=#017CEE;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="170" y="499" width="180" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="poolAf_c1" value="DAG Processor" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#E5FAFB;strokeColor=#00C7D4;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="170" y="526" width="180" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="poolAf_c2" value="Triggerer" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#FFF0EC;strokeColor=#FF7557;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="170" y="553" width="180" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="poolAf_c3" value="API Server" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#E7F7FF;strokeColor=#0CB6FF;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="170" y="580" width="180" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="poolJobs" value='&lt;b&gt;Jobs Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#7A8CA3"&gt;&lt;i&gt;general task execution&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=8;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#8CA3B8;strokeWidth=1.5;verticalAlign=top;spacingTop=4;fontSize=12;fontColor=#37474F;" vertex="1" parent="1">
+          <mxGeometry x="385" y="455" width="220" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="poolJobs_c0" value="Worker Pods&lt;br/&gt;standard tasks" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#FDEAE7;strokeColor=#E43921;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="405" y="499" width="180" height="34" as="geometry" />
         </mxCell>
         <mxCell id="poolHi" value='&lt;b&gt;High Memory Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#7A8CA3"&gt;&lt;i&gt;memory-optimised nodes&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=8;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#8CA3B8;strokeWidth=1.5;verticalAlign=top;spacingTop=4;fontSize=12;fontColor=#37474F;" vertex="1" parent="1">
-          <mxGeometry x="440" y="455" width="270" height="160" as="geometry" />
+          <mxGeometry x="620" y="455" width="220" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="poolHi_c0" value="DAG Processor" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#E5FAFB;strokeColor=#00C7D4;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
-          <mxGeometry x="460" y="499" width="230" height="22" as="geometry" />
-        </mxCell>
-        <mxCell id="poolHi_c1" value="Worker Pods — memory-heavy tasks" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#FDEAE7;strokeColor=#E43921;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
-          <mxGeometry x="460" y="526" width="230" height="22" as="geometry" />
+        <mxCell id="poolHi_c0" value="Worker Pods&lt;br/&gt;memory-heavy tasks" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#FDEAE7;strokeColor=#E43921;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="640" y="499" width="180" height="34" as="geometry" />
         </mxCell>
         <mxCell id="poolUltra" value='&lt;b&gt;Ultra High Memory Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#7A8CA3"&gt;&lt;i&gt;very large memory nodes&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=8;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#8CA3B8;strokeWidth=1.5;verticalAlign=top;spacingTop=4;fontSize=12;fontColor=#37474F;" vertex="1" parent="1">
-          <mxGeometry x="730" y="455" width="270" height="160" as="geometry" />
+          <mxGeometry x="855" y="455" width="220" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="poolUltra_c0" value="Worker Pods — ultra-high-memory tasks" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#FDEAE7;strokeColor=#E43921;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
-          <mxGeometry x="750" y="499" width="230" height="22" as="geometry" />
+        <mxCell id="poolUltra_c0" value="Worker Pods&lt;br/&gt;ultra-high-memory tasks" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#FDEAE7;strokeColor=#E43921;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="875" y="499" width="180" height="34" as="geometry" />
         </mxCell>
         <mxCell id="poolCpu" value='&lt;b&gt;Compute Optimised Pool&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#7A8CA3"&gt;&lt;i&gt;CPU-optimised nodes&lt;/i&gt;&lt;/font&gt;' style="rounded=1;arcSize=8;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#8CA3B8;strokeWidth=1.5;verticalAlign=top;spacingTop=4;fontSize=12;fontColor=#37474F;" vertex="1" parent="1">
-          <mxGeometry x="1020" y="455" width="270" height="160" as="geometry" />
+          <mxGeometry x="1090" y="455" width="220" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="poolCpu_c0" value="Scheduler" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#E6F2FE;strokeColor=#017CEE;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
-          <mxGeometry x="1040" y="499" width="230" height="22" as="geometry" />
-        </mxCell>
-        <mxCell id="poolCpu_c1" value="Triggerer" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#FFF0EC;strokeColor=#FF7557;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
-          <mxGeometry x="1040" y="526" width="230" height="22" as="geometry" />
-        </mxCell>
-        <mxCell id="poolCpu_c2" value="Webserver" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#E6F7ED;strokeColor=#00AD46;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
-          <mxGeometry x="1040" y="553" width="230" height="22" as="geometry" />
-        </mxCell>
-        <mxCell id="poolCpu_c3" value="API Server" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#E7F7FF;strokeColor=#0CB6FF;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
-          <mxGeometry x="1040" y="580" width="230" height="22" as="geometry" />
+        <mxCell id="poolCpu_c0" value="Worker Pods&lt;br/&gt;CPU-intensive tasks" style="rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor=#FDEAE7;strokeColor=#E43921;strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="499" width="180" height="34" as="geometry" />
         </mxCell>
         <mxCell id="user" value='&lt;b&gt;&lt;font color="#51504F"&gt;Users&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Data engineers · CI/CD&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#51504F;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
           <mxGeometry x="200" y="85" width="170" height="60" as="geometry" />
@@ -71,22 +74,19 @@
           <mxGeometry x="575" y="85" width="290" height="60" as="geometry" />
         </mxCell>
         <mxCell id="sched" value='&lt;b&gt;&lt;font color="#017CEE"&gt;Scheduler&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Schedules DAG runs&lt;br/&gt;&amp;amp; queues tasks&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#017CEE;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
-          <mxGeometry x="160" y="260" width="170" height="80" as="geometry" />
+          <mxGeometry x="165" y="260" width="190" height="80" as="geometry" />
         </mxCell>
         <mxCell id="dagproc" value='&lt;b&gt;&lt;font color="#00C7D4"&gt;DAG Processor&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Parses DAG files&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#00C7D4;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
-          <mxGeometry x="350" y="260" width="170" height="80" as="geometry" />
+          <mxGeometry x="395" y="260" width="190" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="web" value='&lt;b&gt;&lt;font color="#00AD46"&gt;Webserver&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Airflow UI&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#00AD46;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
-          <mxGeometry x="540" y="260" width="170" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="api" value='&lt;b&gt;&lt;font color="#0CB6FF"&gt;API Server&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;REST &amp;amp; Execution API&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#0CB6FF;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
-          <mxGeometry x="730" y="260" width="170" height="80" as="geometry" />
+        <mxCell id="api" value='&lt;b&gt;&lt;font color="#0CB6FF"&gt;API Server&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Airflow UI · REST&lt;br/&gt;&amp;amp; Execution API&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#0CB6FF;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
+          <mxGeometry x="625" y="260" width="190" height="80" as="geometry" />
         </mxCell>
         <mxCell id="trig" value='&lt;b&gt;&lt;font color="#FF7557"&gt;Triggerer&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Async deferred&lt;br/&gt;operators&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#FF7557;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
-          <mxGeometry x="920" y="260" width="170" height="80" as="geometry" />
+          <mxGeometry x="855" y="260" width="190" height="80" as="geometry" />
         </mxCell>
         <mxCell id="work" value='&lt;b&gt;&lt;font color="#E43921"&gt;Workers&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;Execute tasks&lt;br/&gt;(Kubernetes pods)&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#E43921;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
-          <mxGeometry x="1110" y="260" width="170" height="80" as="geometry" />
+          <mxGeometry x="1085" y="260" width="190" height="80" as="geometry" />
         </mxCell>
         <mxCell id="akv" value='&lt;b&gt;&lt;font color="#0078D4"&gt;Azure Key Vault&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font style="font-size:9px;" color="#6B7B8D"&gt;connections · variables · certs&lt;/font&gt;' style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#0078D4;strokeWidth=2;align=center;verticalAlign=middle;fontSize=12;fontColor=#2F3B47;" vertex="1" parent="1">
           <mxGeometry x="380" y="730" width="200" height="70" as="geometry" />
@@ -124,15 +124,8 @@
         </mxCell>
         <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#017CEE;endArrow=block;endFill=1;endSize=6;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="625" y="145" as="sourcePoint" />
-            <mxPoint x="625" y="260" as="targetPoint" />
-            
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#017CEE;endArrow=block;endFill=1;endSize=6;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="815" y="145" as="sourcePoint" />
-            <mxPoint x="815" y="260" as="targetPoint" />
+            <mxPoint x="720" y="145" as="sourcePoint" />
+            <mxPoint x="720" y="260" as="targetPoint" />
             
           </mxGeometry>
         </mxCell>

@@ -63,12 +63,11 @@ BOXES = [
     ("user",    "Users",                    ["Data engineers · CI/CD"],                 GRAY,   200,   85, 170, 60),
     ("ingress", "Ingress / Load Balancer",  ["TLS termination · routes UI & API"],      BLUE,   575,   85, 290, 60),
 
-    ("sched",   "Scheduler",                ["Schedules DAG runs", "& queues tasks"],        BLUE,   160,  260, 170, 80),
-    ("dagproc", "DAG Processor",            ["Parses DAG files"],                            TEAL,   350,  260, 170, 80),
-    ("web",     "Webserver",                ["Airflow UI"],                                  GREEN,  540,  260, 170, 80),
-    ("api",     "API Server",               ["REST & Execution API"],                        SKY,    730,  260, 170, 80),
-    ("trig",    "Triggerer",                ["Async deferred", "operators"],                 CORAL,  920,  260, 170, 80),
-    ("work",    "Workers",                  ["Execute tasks", "(Kubernetes pods)"],          RED,   1110,  260, 170, 80),
+    ("sched",   "Scheduler",                ["Schedules DAG runs", "& queues tasks"],        BLUE,   165,  260, 190, 80),
+    ("dagproc", "DAG Processor",            ["Parses DAG files"],                            TEAL,   395,  260, 190, 80),
+    ("api",     "API Server",               ["Airflow UI · REST", "& Execution API"],        SKY,    625,  260, 190, 80),
+    ("trig",    "Triggerer",                ["Async deferred", "operators"],                 CORAL,  855,  260, 190, 80),
+    ("work",    "Workers",                  ["Execute tasks", "(Kubernetes pods)"],          RED,   1085,  260, 190, 80),
 
     ("akv",     "Azure Key Vault",          ["connections · variables · certs"],   AZURE,  380,  730, 200, 70),
     ("spc",     "SecretProviderClass",      ["Secrets Store CSI driver"],                    AZURE,  620,  730, 200, 70),
@@ -84,24 +83,27 @@ BOXES = [
                                                                                              PGBLUE, 900, 1105, 350, 70),
 ]
 
-# id, title, subtitle, x  (all pools: y=455, w=270, h=160)
-POOL_Y, POOL_W, POOL_H = 455, 270, 160
+# id, title, subtitle, x, chips  (all pools: y=455, w=220, h=160)
+# each chip is (lines, colour) — 1-line chips are 22px, 2-line chips 34px
+POOL_Y, POOL_W, POOL_H = 455, 220, 160
 POOLS = [
-    ("poolJobs",  "Jobs Pool",                 "general task execution",  150,
-     [("Worker Pods — standard tasks", RED)]),
-    ("poolHi",    "High Memory Pool",          "memory-optimised nodes",  440,
-     [("DAG Processor", TEAL), ("Worker Pods — memory-heavy tasks", RED)]),
-    ("poolUltra", "Ultra High Memory Pool",    "very large memory nodes", 730,
-     [("Worker Pods — ultra-high-memory tasks", RED)]),
-    ("poolCpu",   "Compute Optimised Pool",    "CPU-optimised nodes",    1020,
-     [("Scheduler", BLUE), ("Triggerer", CORAL), ("Webserver", GREEN), ("API Server", SKY)]),
+    ("poolAf",    "Airflow Pool",              "core components",         150,
+     [(["Scheduler"], BLUE), (["DAG Processor"], TEAL),
+      (["Triggerer"], CORAL), (["API Server"], SKY)]),
+    ("poolJobs",  "Jobs Pool",                 "general task execution",  385,
+     [(["Worker Pods", "standard tasks"], RED)]),
+    ("poolHi",    "High Memory Pool",          "memory-optimised nodes",  620,
+     [(["Worker Pods", "memory-heavy tasks"], RED)]),
+    ("poolUltra", "Ultra High Memory Pool",    "very large memory nodes", 855,
+     [(["Worker Pods", "ultra-high-memory tasks"], RED)]),
+    ("poolCpu",   "Compute Optimised Pool",    "CPU-optimised nodes",    1090,
+     [(["Worker Pods", "CPU-intensive tasks"], RED)]),
 ]
 
 # id, colour, points [(x,y)...] first=start last=end (arrow at end)
 EDGES = [
     ("e1",  BLUE,   [(370, 115), (575, 115)]),
-    ("e2",  BLUE,   [(625, 145), (625, 260)]),
-    ("e3",  BLUE,   [(815, 145), (815, 260)]),
+    ("e2",  BLUE,   [(720, 145), (720, 260)]),
     ("e4",  GRAY,   [(720, 370), (720, 410)]),
     ("e5",  PURPLE, [(580, 765), (620, 765)]),
     ("e6",  PURPLE, [(720, 730), (720, 640)]),
@@ -172,12 +174,13 @@ def drawio() -> str:
             f"strokeColor={POOLSTR};strokeWidth=1.5;verticalAlign=top;spacingTop=4;"
             f"fontSize=12;fontColor=#37474F;", px, POOL_Y, POOL_W, POOL_H)
         cy = POOL_Y + 44
-        for i, (ctext, ccol) in enumerate(chips):
-            vtx(f"{pid}_c{i}", ctext,
+        for i, (clines, ccol) in enumerate(chips):
+            ch = 22 if len(clines) == 1 else 34
+            vtx(f"{pid}_c{i}", "<br/>".join(escape(s) for s in clines),
                 f"rounded=1;arcSize=40;html=1;whiteSpace=wrap;fillColor={TINT[ccol]};"
                 f"strokeColor={ccol};strokeWidth=1.2;fontSize=10;fontColor=#2F3B47;",
-                px + 20, cy, 230, 22)
-            cy += 27
+                px + 20, cy, POOL_W - 40, ch)
+            cy += ch + 5
 
     for bid, btitle, subs, col, x, y, w, h in BOXES:
         sub = "<br/>".join(escape(s) for s in subs)
@@ -282,11 +285,17 @@ def svg() -> str:
         text(px + POOL_W / 2, POOL_Y + 20, ptitle, 12.5, "#37474F", anchor="middle", bold=True)
         text(px + POOL_W / 2, POOL_Y + 35, psub, 9.5, LFONT, anchor="middle", italic=True)
         cy = POOL_Y + 44
-        for ctext, ccol in chips:
-            out.append(f'<rect x="{px + 20}" y="{cy}" width="230" height="22" rx="11" '
-                       f'fill="{TINT[ccol]}" stroke="{ccol}" stroke-width="1.2"/>')
-            text(px + 20 + 115, cy + 15, ctext, 10, "#2F3B47", anchor="middle")
-            cy += 27
+        for clines, ccol in chips:
+            ch = 22 if len(clines) == 1 else 34
+            out.append(f'<rect x="{px + 20}" y="{cy}" width="{POOL_W - 40}" height="{ch}" '
+                       f'rx="11" fill="{TINT[ccol]}" stroke="{ccol}" stroke-width="1.2"/>')
+            if len(clines) == 1:
+                text(px + POOL_W / 2, cy + 15, clines[0], 10, "#2F3B47", anchor="middle")
+            else:
+                for j, line in enumerate(clines):
+                    text(px + POOL_W / 2, cy + 14 + j * 12, line, 10, "#2F3B47",
+                         anchor="middle")
+            cy += ch + 5
 
     for _, btitle, subs, col, x, y, w, h in BOXES:
         out.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="9" '

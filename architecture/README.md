@@ -23,13 +23,16 @@ to get a native Visio file.
 
 1. **User Layer** — users reach the Airflow UI and REST API through an
    Ingress / Load Balancer (TLS termination).
-2. **Airflow Core Layer** — Scheduler, DAG Processor, Webserver, API Server,
-   Triggerer, Workers.
+2. **Airflow Core Layer** — Scheduler, DAG Processor, API Server (serves the
+   Airflow UI as well as the REST & Execution APIs in Airflow 3), Triggerer,
+   Workers.
 3. **Kubernetes Node Pools Layer** — pods are placed by resource profile:
+   - **Airflow Pool** — the core components: Scheduler, DAG Processor,
+     Triggerer, API Server
    - **Jobs Pool** — worker pods for standard tasks
-   - **High Memory Pool** — DAG Processor and memory-heavy worker pods
+   - **High Memory Pool** — worker pods for memory-heavy tasks
    - **Ultra High Memory Pool** — worker pods for very large in-memory workloads
-   - **Compute Optimised Pool** — Scheduler, Triggerer, Webserver, API Server
+   - **Compute Optimised Pool** — worker pods for CPU-intensive tasks
 4. **Secrets & Configuration Layer** — Azure Key Vault synced through a
    `SecretProviderClass` (Secrets Store CSI driver); secrets and ConfigMaps /
    Helm values are mounted into the Airflow pods as volumes and env vars.
